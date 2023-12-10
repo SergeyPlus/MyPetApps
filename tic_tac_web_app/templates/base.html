@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link type="text/css" href="{{ url_for('static', filename='css/styles.css') }}" rel="stylesheet" />
+    {{ moment.include_moment() }}
+    {% block head %}
+    <meta charset="UTF-8">
+    <title>Tic-Tac: {% block title %}{% endblock %}</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
+              rel="stylesheet"
+              integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9"
+              crossorigin="anonymous">
+    {% endblock %}
+</head>
+<body>
+    <p>
+        Tic-Tac was started on {{ moment(now).format('LLL') }},
+        time passed from started {{ moment(now).fromNow(refresh = True) }}.
+    </p>
+    {% if session.get("login") %}
+        <p>
+            User: {{ session.get("login") }}
+            <a href="{{ url_for('entry_point') }}">to log in</a>
+        </p>
+    {% else %}
+        User:
+        <a href="{{ url_for('entry_point') }}">Log in</a>
+    {% endif %}
+    {% block body %}
+    {% endblock %}
+
+</body>
+</html>

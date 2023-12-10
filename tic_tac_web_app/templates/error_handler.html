@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block title %}Error{% endblock %}
+{% block head %}
+    {{ super() }}
+{% endblock %}
+{% block body %}
+    <div class="container text-center">
+
+        <h3>{{ error_message }}</h3>
+        <form>
+            <div style="display:inline-block">
+
+                <h5> __XO__ </h5></p>
+                <h5> __XO__ </h5></p>
+                <h5> __XO__ </h5></p>
+            </div>
+            <div style="display:inline-block">
+                <h5> __XO__ </h5></p>
+                <h5> __XO__ </h5></p>
+                <h5> __XO__ </h5></p>
+            </div>
+            <div style="display:inline-block">
+                <h5> __XO__ </h5></p>
+                <h5> __XO__ </h5></p>
+                <h5> __XO__ </h5></p>
+            </div>
+        </form>
+        <a href="{{ url_for('entry_point') }}">go to sign in</a>
+    </div>
+{% endblock %}

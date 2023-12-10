@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block title %}Entrance{% endblock %}
+{% block head %}
+    {{ super() }}
+{% endblock %}
+{% block body %}
+    <div class="container text-center">
+        <h1>WELCOME</h1>
+        {% for msg in get_flashed_messages() %}
+        <div class="flash">{{ msg }}</div>
+        {% endfor %}
+        <form class="form-contact" action="{{ url_for('entry_point') }}">
+            <p><input type="text" placeholder="login" name="login" required/></p>
+            <p><input type="password" name="password" placeholder="Password" required /></p>
+            <a href="{{ url_for('registration') }}">registration</a>
+            <button type="submit" class="btn btn-primary" formmethod="post" >Sign in</button>
+
+        </form>
+        {% if form.errors %}
+            <ul class="errors">
+            {% for error in form.errors.items() %}
+                <li>{{ error }}</li>
+            {% endfor %}
+            </ul>
+        {% endif %}
+    </div>
+{% endblock %}

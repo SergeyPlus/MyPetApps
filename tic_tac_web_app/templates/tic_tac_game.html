@@ -1,0 +1,121 @@
+{% extends "base.html" %}
+{% block title %}Start game{% endblock %}
+{% block head %}
+    {{ super() }}
+{% endblock %}
+{% block body %}
+<p>
+    Game
+    <a href="{{ url_for('tic_tac_game', change_game=1) }}">restart </a>
+</p>
+<p>
+    Game
+    <a href="{{ url_for('tic_tac_game', change_game=2) }}">leave</a>
+</p>
+
+    <div class="container text-center">
+
+        {% if flag %}
+            {% if not winner %}
+                {% for msg in get_flashed_messages() %}
+                <div class="flash">{{ msg }}</div>
+                {% endfor %}
+                <form class="form-contact" method="post" id="game">
+                    <h3>TIC TAC STARTED</h3>
+                    <p> {{ player_1_name }} plays by "{{ session.get('player_1_sym') }}"    VS     {{ player_2_name }} plays by "{{ session.get('player_2_sym') }}"</p>
+                    <p> TOTAL SCORE </p>
+                    <h1>{{ session.get('player_1_score', 0) }} : {{ session.get('player_2_score', 0) }}</h1>
+                    <div style="display:inline-block">
+                        {% if field_table.get('nod_0') %}
+                            {{ session['tic_tac_table'].get('nod_0') }}</p>
+                        {% else %}
+                            <p><input type="text" name="nod_0" value="" pattern="[0x]" size="5" /></p>
+                        {% endif %}
+
+                        {% if field_table.get('nod_3') %}
+                            {{ field_table.get('nod_3') }}</p>
+                        {% else %}
+                            <input type="text" name="nod_3" value="" pattern="[0x]" size="5" /></p>
+                        {% endif %}
+
+                        {% if field_table.get('nod_6') %}
+                            {{ field_table.get('nod_6') }}</p>
+                        {% else %}
+                            <input type="text" name="nod_6" value="" pattern="[0x]" size="5" /></p>
+                        {% endif %}
+                    </div>
+                    <div style="display:inline-block">
+
+                        {% if field_table.get('nod_1') %}
+                            {{ field_table.get('nod_1') }}</p>
+                        {% else %}
+                            <input type="text" name="nod_1" value="" pattern="[0x]" size="5" /></p>
+                        {% endif %}
+
+                        {% if field_table.get('nod_4') %}
+                            {{ field_table.get('nod_4') }}</p>
+                        {% else %}
+                            <input type="text" name="nod_4" value="" pattern="[0x]" size="5" /></p>
+                        {% endif %}
+
+
+                        {% if field_table.get('nod_7') %}
+                            {{ field_table.get('nod_7') }}</p>
+                        {% else %}
+                            <input type="text" name="nod_7" value="" pattern="[0x]" size="5" /></p>
+                        {% endif %}
+
+                    </div>
+                    <div style="display:inline-block">
+
+                        {% if field_table.get('nod_2') %}
+                            {{ field_table.get('nod_2') }}</p>
+                        {% else %}
+                            <input type="text" name="nod_2" value="" pattern="[0x]" size="5" /></p>
+                        {% endif %}
+
+                        {% if field_table.get('nod_5') %}
+                            {{ field_table.get('nod_5') }}</p>
+                        {% else %}
+                            <input type="text" name="nod_5" value="" pattern="[0x]" size="5" /></p>
+                        {% endif %}
+
+                        {% if field_table.get('nod_8') %}
+                            {{ field_table.get('nod_8') }}</p>
+                        {% else %}
+                            <input type="text" name="nod_8" value="" pattern="[0x]" size="5" /></p>
+                        {% endif %}
+                    </div>
+                    <p><label>Validate your turn: </label><button type="submit" class="btn btn-primary" formmethod="post">Proceed</button>
+                </form>
+            {% else %}
+                <form class="form-contact" id="restart">
+                    <h3>Congratulations! {{ winner }}</h3>
+                    <p> {{ player_1_name }} plays by "{{ session.get('player_1_sym') }}"    VS     {{ player_2_name }} plays by "{{ session.get('player_2_sym') }}"</p>
+                    <p> TOTAL SCORE </p>
+                    <h1>{{ session.get('player_1_score', 0) }} : {{ session.get('player_2_score', 0) }}</h1>
+                    <p><label>yes </label> <input type="radio" name="restart" value="yes" checked/></p>
+                    <p><label>no  </label> <input type="radio" name="restart" value="no" /></p>
+                    <label>Play again? </label><button type="submit" >Proceed</button>
+                </form>
+
+            {% endif %}
+        {% else %}
+            <form class="form-contact" method="post" id="player_names">
+                <h3>INTRODUCTION</h3>
+                {% if player_1_name %}
+                    <p>Player 1: {{ player_1_name }}</p>
+                {% else %}
+                    <p><label>Player 1: </label> <input type="text" name="player_1_name" value="" required/></p>
+                {% endif %}
+                {% if player_2_name %}
+                    <p>Player 2: {{ player_2_name }}</p>
+                {% else %}
+                    <p><label>Player 2: </label> <input type="text" name="player_2_name" value="" required/></p>
+                {% endif %}
+                <label>Play the game: </label><button type="submit" class="btn btn-primary" formmethod="post">Start</button>
+            </form>
+        {% endif %}
+
+    </div>
+{% endblock %}
