@@ -22,9 +22,9 @@
                 {% endfor %}
                 <form class="form-contact" method="post" id="game">
                     <h3>TIC TAC STARTED</h3>
-                    <p> {{ player_1_name }} plays by "{{ session.get('player_1_sym') }}"    VS     {{ player_2_name }} plays by "{{ session.get('player_2_sym') }}"</p>
+                    <p> {{ player_1_name }} plays by "{{ session.get('players_data', {}).get('sym_1', ' ') }}"    VS     {{ player_2_name }} plays by "{{ session.get('players_data', {}).get('sym_2', ' ') }}"</p>
                     <p> TOTAL SCORE </p>
-                    <h1>{{ session.get('player_1_score', 0) }} : {{ session.get('player_2_score', 0) }}</h1>
+                    <h1>{{ session.get('players_data', {}).get('score_1', 0) }} : {{ session.get('players_data', {}).get('score_2', 0) }}</h1>
                     <div style="display:inline-block">
                         {% if field_table.get('nod_0') %}
                             {{ session['tic_tac_table'].get('nod_0') }}</p>
@@ -91,9 +91,8 @@
             {% else %}
                 <form class="form-contact" id="restart">
                     <h3>Congratulations! {{ winner }}</h3>
-                    <p> {{ player_1_name }} plays by "{{ session.get('player_1_sym') }}"    VS     {{ player_2_name }} plays by "{{ session.get('player_2_sym') }}"</p>
-                    <p> TOTAL SCORE </p>
-                    <h1>{{ session.get('player_1_score', 0) }} : {{ session.get('player_2_score', 0) }}</h1>
+                    <p> {{ player_1_name }} plays by "{{ session.get('players_data', {}).get('sym_1', ' ') }}"    VS     {{ player_2_name }} plays by "{{ session.get('players_data', {}).get('sym_2', ' ') }}"</p>                    <p> TOTAL SCORE </p>
+                    <h1>{{ session.get('players_data', {}).get('score_1', 0) }} : {{ session.get('players_data', {}).get('score_2', 0) }}</h1>
                     <p><label>yes </label> <input type="radio" name="restart" value="yes" checked/></p>
                     <p><label>no  </label> <input type="radio" name="restart" value="no" /></p>
                     <label>Play again? </label><button type="submit" >Proceed</button>
@@ -103,16 +102,9 @@
         {% else %}
             <form class="form-contact" method="post" id="player_names">
                 <h3>INTRODUCTION</h3>
-                {% if player_1_name %}
-                    <p>Player 1: {{ player_1_name }}</p>
-                {% else %}
-                    <p><label>Player 1: </label> <input type="text" name="player_1_name" value="" required/></p>
-                {% endif %}
-                {% if player_2_name %}
-                    <p>Player 2: {{ player_2_name }}</p>
-                {% else %}
-                    <p><label>Player 2: </label> <input type="text" name="player_2_name" value="" required/></p>
-                {% endif %}
+
+                <p><label>Player 1: </label> <input type="text" name="player_1_name" value="" required/></p>
+                <p><label>Player 2: </label> <input type="text" name="player_2_name" value="" required/></p>
                 <label>Play the game: </label><button type="submit" class="btn btn-primary" formmethod="post">Start</button>
             </form>
         {% endif %}

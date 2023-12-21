@@ -22,7 +22,7 @@ class MyRegistrationForm(FlaskForm):
     password = PasswordField('password',
                         validators=[
                             Length(min=8, max=120),
-                            EqualTo('confirm', message='password 1 and password 2 should be equal')])
+                            EqualTo('confirm', message='password and repeat password should be equal')])
     confirm = PasswordField('pass2')
 
     def validate_password(form, field):
@@ -74,6 +74,14 @@ class TicTacFieldTable(FlaskForm):
     nod_6 = StringField('nod_0')
     nod_7 = StringField('nod_0')
     nod_8 = StringField('nod_0')
+
+
+class ChangePassword(MyRegistrationForm):
+    """
+    The form needed in case of password changing and it inheritance from MyRegistrationForm
+    """
+    name = None
+    phone = None
 
 
 if __name__ == '__main__':
