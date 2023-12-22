@@ -99,30 +99,28 @@ def set_profile():
                            )
 
 
-@app.route('/main_page/tic_tac_game/<int:change_game>', methods=['GET', 'POST'])
-def tic_tac_game(change_game):
+@app.route('/main_page/tic_tac_game_players_introduction', methods=['GET', 'POST'])
+def tic_tac_game_players_introduction():
     """
-    View function which is rendering tic tac game.
+    View function which is rendering tic tac game page and require to set player names.
     """
     if not session.get('login'):
         abort(401)
 
     # if flag = 0 it will be rendered form_players with inputting player names
     players = Players()
-    session['flag'] = Game.flag
-    view_logger.info(f'Game is starting. Restart game value {change_game}, flag = {Game.flag}')
+    game_render_form: str = Game.game_context.get('game_render_form')
+    view_logger.info(
+        f'Players introduction. Game_render_form: {Game.game_context.get("game_render_form")}')
 
     form_players = PlayersForms(meta={'csrf': False})
-    if form_players.validate_on_submit() and form_players.player_1_name.data is not None and form_players.player_2_name.data is not None:
+    if form_players.validate_on_submit() and game_render_form == 'set_player_names':
         view_logger.info(f'The players form is validated')
 
         players.players_data['name_1'] = form_players.player_1_name.data
         players.players_data['name_2'] = form_players.player_2_name.data
         Game.identify_symbol()
-
-        # if flag = 1 it will be rendered tic_tac_form - field of the game
-        Game.flag = 1
-        session['flag'] = Game.flag
+        Game.game_context['game_render_form'] = 'game'
         session['players_data'] = players.players_data
 
         view_logger.info(
@@ -134,87 +132,89 @@ def tic_tac_game(change_game):
             f"Player_2 data: [name  {session.get('players_data')['name_2']}, "
             f"              sym  {session.get('players_data')['sym_2']}, "
             f"              score {session.get('players_data')['score_2']}]")
-        return redirect(url_for('tic_tac_game', change_game=0))
+        return redirect(url_for('tic_tac_game_start_game'))
+    return render_template(
+        'tic_tac_game.html',
+        player_1_name=session.get('players_data', {}).get('name_1'),
+        player_2_name=session.get('players_data', {}).get('name_2'),
+        field_table=Game.game_context.get("tic_tac_table"),
+        now=datetime.datetime.utcnow(),
+        winner=Game.game_context['winner'],
+        game_render_form=Game.game_context['game_render_form']
+    )
 
+
+@app.route('/main_page/tic_tac_game_start_game', methods=['GET', 'POST'])
+def tic_tac_game_start_game():
+    if not session.get('login'):
+        abort(401)
+    
+    players = Players()
     tic_tac_form = TicTacFieldTable(meta={'csrf': False})
     if tic_tac_form.validate_on_submit():
         response: Dict = tic_tac_form.data
-        view_logger.info(f"Received data from Player with symbol {response}")
-
-        # checking how many symbols player put per 1 turn. It should be only 1 symbol
-        if not Game.check_symbols_quantity_for_turn(response):
-            flash(f'please put the only 1 symbol for turn')
-            view_logger.info(f"The checking of symbols quantity passed not well")
-            return redirect(url_for('tic_tac_game', change_game=0))
-        view_logger.info(f'The checking of symbols quantity passed well')
-
-        tic_tac_table = Game.complete_field(response)
-        session['tic_tac_table'] = tic_tac_table
-        Game.check_winner()
-        if Game.winner:
-            session['winner'] = Game.winner
-            # in order to fix play field once winner is existed put _____ symbol into free cells
-            tic_tac_table = Game.finalize_field()
-            session['tic_tac_table'] = tic_tac_table
-
-        # Checking win-win situation if there is no empty cells and there is no a winner
-        elif Game.winner is None and len(session.get('tic_tac_table', {})) == 9:
-            view_logger.info(f"Win - Win situation")
-            players.players_data['score_1'] += 1
-            players.players_data['score_2'] += 1
-            Game.winner = f" both players {players.players_data['name_1']} and {players.players_data['name_2'] } win"
-            session['winner'] = Game.winner
-
+        view_logger.info(f"Received turn from Player with symbol {response}")
+        
+        message = Game.game_manager(response)
+        if message:
+            flash(message=message)
+            return redirect(url_for('tic_tac_game_start_game'))
+        
+        view_logger.info(f'Game context {Game.game_context}')
         session['players_data'] = players.players_data
-        view_logger.info(f"The turn was recorded in session successfully {session.get('tic_tac_table')}")
-        return redirect(url_for('tic_tac_game', change_game=0))
+        return redirect(url_for('tic_tac_game_start_game'))
+    view_logger.info(f'Game_render_form {Game.game_context["game_render_form"]}')
+    return render_template(
+        'tic_tac_game.html',
+        player_1_name=session.get('players_data', {}).get('name_1'),
+        player_2_name=session.get('players_data', {}).get('name_2'),
+        field_table=Game.game_context.get("tic_tac_table"),
+        now=datetime.datetime.utcnow(),
+        winner=Game.game_context['winner'],
+        game_render_form=Game.game_context['game_render_form']
+    )
 
-    if request.method == 'GET' and request.args.to_dict():
-        response = request.args.to_dict()
-        view_logger.info(f'Received GET request with {response}')
+@app.route('/main_page/tic_tac_game_change_game/<int:code>/')
+def tic_tac_game_change_game(code):
+    if not session.get('login'):
+        abort(401)
+    
+    response = request.args.to_dict()
+    view_logger.info(f'Received GET request with {response} with code {code}')
 
-        # in order to play next round of the game with same players
-        if response.get('restart') == 'yes':
-            Game.restart_game_with_same_players()
-            session.pop('winner', Game.winner)
-            session['tic_tac_table'] = Game.tic_tac_table
+    # in order to play next round of the game with same players
+    if code == 0 and response.get('restart') == 'yes': 
+        return redirect(url_for('tic_tac_game_change_game', code=1))
 
         # in order to end the game with these players and start game for new players
-        elif response.get('restart') == 'no':
-            Game.restart_game_with_new_players()
-            session['players_data'] = players.players_data
-            session['tic_tac_table'] = Game.tic_tac_table
-            session['winner'] = Game.winner
-            session['flag'] = Game.flag
-            return redirect(url_for('tic_tac_game', change_game=0))
+    elif code == 0 and response.get('restart') == 'no': 
+        return redirect(url_for('tic_tac_game_change_game', code=2))
 
     # in order to restart game
-    if change_game == 1:
-        view_logger.info(f'Worked restart game condition: change_game = {change_game}')
-        Game.tic_tac_table.clear()
-        Game.GAME_FIELD = [0] * 9
-        session['tic_tac_table'] = Game.tic_tac_table
+    if code == 1:
+        view_logger.info(f'Worked restart game: code = {code}')
+        Game.restart_game_with_same_players()
+        return redirect(url_for('tic_tac_game_start_game'))
 
     # in order to leave the game and go to main page
-    elif change_game == 2:
+    elif code == 2:
+        view_logger.info(f'Worked leave game: code = {code}')
         Game.restart_game_with_new_players()
-        session['flag'] = Game.flag
+        players = Players()
         session['players_data'] = players.players_data
-        session['tic_tac_table'] = Game.tic_tac_table
-        session['winner'] = Game.winner
         return redirect(url_for('get_main_page', login=session.get('login')))
 
     view_logger.info(
-        f'Session data winner {session.get("winner")}, table {session.get("tic_tac_table")}')
+        f'Session data winner {Game.game_context}')
 
     return render_template(
         'tic_tac_game.html',
         player_1_name=session.get('players_data', {}).get('name_1'),
         player_2_name=session.get('players_data', {}).get('name_2'),
-        field_table=session.get("tic_tac_table", {}),
+        field_table=Game.game_context.get("tic_tac_table"),
         now=datetime.datetime.utcnow(),
-        winner=session.get('winner'),
-        flag=session.get('flag')
+        winner=Game.game_context['winner'],
+        game_render_form=Game.game_context['game_render_form']
     )
 
 
@@ -273,4 +273,4 @@ def handle_exception(e):
 
 
 if __name__ == '__main__':
-    app.run()
+    app.run(port=5001)

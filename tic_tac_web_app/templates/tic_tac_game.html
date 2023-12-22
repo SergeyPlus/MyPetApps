@@ -6,16 +6,16 @@
 {% block body %}
 <p>
     Game
-    <a href="{{ url_for('tic_tac_game', change_game=1) }}">restart </a>
+    <a href="{{ url_for('tic_tac_game_change_game', code=1) }}">restart </a>
 </p>
 <p>
     Game
-    <a href="{{ url_for('tic_tac_game', change_game=2) }}">leave</a>
+    <a href="{{ url_for('tic_tac_game_change_game', code=2) }}">leave</a>
 </p>
 
     <div class="container text-center">
 
-        {% if flag %}
+        {% if game_render_form == 'game' %}
             {% if not winner %}
                 {% for msg in get_flashed_messages() %}
                 <div class="flash">{{ msg }}</div>
@@ -27,7 +27,7 @@
                     <h1>{{ session.get('players_data', {}).get('score_1', 0) }} : {{ session.get('players_data', {}).get('score_2', 0) }}</h1>
                     <div style="display:inline-block">
                         {% if field_table.get('nod_0') %}
-                            {{ session['tic_tac_table'].get('nod_0') }}</p>
+                            {{ field_table.get('nod_0') }}</p>
                         {% else %}
                             <p><input type="text" name="nod_0" value="" pattern="[0x]" size="5" /></p>
                         {% endif %}
@@ -86,7 +86,7 @@
                             <input type="text" name="nod_8" value="" pattern="[0x]" size="5" /></p>
                         {% endif %}
                     </div>
-                    <p><label>Validate your turn: </label><button type="submit" class="btn btn-primary" formmethod="post">Proceed</button>
+                    <p><label>Validate your turn: </label><button type="submit" class="btn btn-primary" formmethod="post" formaction="{{ url_for('tic_tac_game_start_game', change_game=0) }}">Proceed</button>
                 </form>
             {% else %}
                 <form class="form-contact" id="restart">
@@ -95,17 +95,17 @@
                     <h1>{{ session.get('players_data', {}).get('score_1', 0) }} : {{ session.get('players_data', {}).get('score_2', 0) }}</h1>
                     <p><label>yes </label> <input type="radio" name="restart" value="yes" checked/></p>
                     <p><label>no  </label> <input type="radio" name="restart" value="no" /></p>
-                    <label>Play again? </label><button type="submit" >Proceed</button>
+                    <label>Play again? </label><button type="submit" formaction="{{ url_for('tic_tac_game_change_game', code=0) }}">Proceed</button>
                 </form>
 
             {% endif %}
-        {% else %}
+        {% elif game_render_form == 'set_player_names' %}
             <form class="form-contact" method="post" id="player_names">
                 <h3>INTRODUCTION</h3>
 
                 <p><label>Player 1: </label> <input type="text" name="player_1_name" value="" required/></p>
                 <p><label>Player 2: </label> <input type="text" name="player_2_name" value="" required/></p>
-                <label>Play the game: </label><button type="submit" class="btn btn-primary" formmethod="post">Start</button>
+                <label>Play the game: </label><button type="submit" class="btn btn-primary" formmethod="post" formaction="{{ url_for('tic_tac_game_players_introduction', change_game=0) }}">Start</button>
             </form>
         {% endif %}
 
