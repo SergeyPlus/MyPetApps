@@ -1,4 +1,3 @@
-import logging
 import os
 import sys
 
@@ -25,7 +24,8 @@ class DevelopmentConfig(Config):
 
 
 class TestingConfig(Config):
-    ...
+    TESTING = True
+    DEBUG = False
 
 
 class ProductionConfig(Config):

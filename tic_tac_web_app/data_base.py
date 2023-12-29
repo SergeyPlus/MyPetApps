@@ -45,6 +45,9 @@ class UserDb:
         self.password = response[5]
 
     def __getitem__(self, item):
+        """
+        It allows to take items from UserDb instanca in acoordance with Dict approach
+        """
         return getattr(self, item)
 
 

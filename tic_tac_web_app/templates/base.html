@@ -20,12 +20,13 @@
     {% if session.get("login") %}
         <p>
             User: {{ session.get("login") }}
-            <a href="{{ url_for('entry_point') }}">to log in</a>
+            <a href="{{ url_for('log_out') }}">log out</a>
         </p>
     {% else %}
         User:
         <a href="{{ url_for('entry_point') }}">Log in</a>
     {% endif %}
+
     {% block body %}
     {% endblock %}
 

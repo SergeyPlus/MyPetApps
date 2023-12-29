@@ -1,6 +1,5 @@
 from flask import url_for, flash
 from flask import render_template, request, redirect, session, abort
-from flask_mail import Message
 
 from config import LoggerConfig
 from forms import MyRegistrationForm, MyLogInForm, PlayersForms, TicTacFieldTable, ChangePassword
@@ -12,10 +11,10 @@ from logging import config
 import datetime
 from typing import Dict
 
-from app import create_app, mail
+from app import create_app
 
 from data_base import UserDbInterface, UserDb
-from work_objects import Game, Login, Players
+from work_objects import Game, Login, Players, SendMail
 
 
 config.dictConfig(LoggerConfig.log_config_dict)
@@ -34,12 +33,12 @@ def entry_point():
     form = MyLogInForm()
 
     if session.get('login'):
-        return redirect(url_for('get_main_page', login=session['login']))
+        return redirect(url_for('get_main_page'))
 
     elif form.validate_on_submit() and Login.check_login_and_password(form):
         session['login'] = form.login.data
         view_logger.info(f'The name of user {session.get("login")} was set to the session')
-        return redirect(url_for('get_main_page', login=session['login']))
+        return redirect(url_for('get_main_page'))
 
     elif form.validate_on_submit() and not Login.check_login_and_password(form):
         flash('please check your login or password and try to enter again')
@@ -75,16 +74,19 @@ def registration():
                            )
 
 
-@app.route('/main_page/<login>/')
-def get_main_page(login):
+@app.route('/main_page')
+def get_main_page():
     """
     Main page. After log in User comes to this page and then make choose where go further. Now it's available
     the only Tic tac game
     """
-    if not session.get('login') or session.get('login') != login:
+    if not session.get('login'):
         abort(401)
+    
+    user_data: UserDb = UserDbInterface.get_user_data(login=session.get('login'))
+
     return render_template('main_page.html',
-                           login=login,
+                           username=user_data['name'],
                            now=datetime.datetime.utcnow()
                            )
 
@@ -104,10 +106,10 @@ def tic_tac_game_players_introduction():
     """
     View function which is rendering tic tac game page and require to set player names.
     """
+    view_logger.info(f'{session.get("login")}')
     if not session.get('login'):
         abort(401)
 
-    # if flag = 0 it will be rendered form_players with inputting player names
     players = Players()
     game_render_form: str = Game.game_context.get('game_render_form')
     view_logger.info(
@@ -116,11 +118,7 @@ def tic_tac_game_players_introduction():
     form_players = PlayersForms(meta={'csrf': False})
     if form_players.validate_on_submit() and game_render_form == 'set_player_names':
         view_logger.info(f'The players form is validated')
-
-        players.players_data['name_1'] = form_players.player_1_name.data
-        players.players_data['name_2'] = form_players.player_2_name.data
-        Game.identify_symbol()
-        Game.game_context['game_render_form'] = 'game'
+        players.create_players_profiles(form_players)
         session['players_data'] = players.players_data
 
         view_logger.info(
@@ -148,19 +146,22 @@ def tic_tac_game_players_introduction():
 def tic_tac_game_start_game():
     if not session.get('login'):
         abort(401)
-    
     players = Players()
     tic_tac_form = TicTacFieldTable(meta={'csrf': False})
     if tic_tac_form.validate_on_submit():
-        response: Dict = tic_tac_form.data
-        view_logger.info(f"Received turn from Player with symbol {response}")
-        
-        message = Game.game_manager(response)
-        if message:
-            flash(message=message)
-            return redirect(url_for('tic_tac_game_start_game'))
-        
-        view_logger.info(f'Game context {Game.game_context}')
+        try:
+            response: Dict = tic_tac_form.data
+            view_logger.info(f"Received turn from Player with symbol {response}")
+            Game.game_manager(response)
+        except ValueError:
+            flash(message='please check turn it should be the only 1 symbol and "x" or "0"')
+        except IndexError:
+            flash(message='something goes wrong, please start again')
+            Game.restart_game_with_same_players
+        except TypeError:
+            flash(message='something goes wrong, please start again')
+            Game.restart_game_with_same_players
+
         session['players_data'] = players.players_data
         return redirect(url_for('tic_tac_game_start_game'))
     view_logger.info(f'Game_render_form {Game.game_context["game_render_form"]}')
@@ -173,6 +174,7 @@ def tic_tac_game_start_game():
         winner=Game.game_context['winner'],
         game_render_form=Game.game_context['game_render_form']
     )
+
 
 @app.route('/main_page/tic_tac_game_change_game/<int:code>/')
 def tic_tac_game_change_game(code):
@@ -202,7 +204,7 @@ def tic_tac_game_change_game(code):
         Game.restart_game_with_new_players()
         players = Players()
         session['players_data'] = players.players_data
-        return redirect(url_for('get_main_page', login=session.get('login')))
+        return redirect(url_for('get_main_page'))
 
     view_logger.info(
         f'Session data winner {Game.game_context}')
@@ -232,21 +234,16 @@ def remind_password():
         user_data: UserDb = UserDbInterface.get_user_data(login)
         if email == user_data['email']:
             view_logger.info(f'Login {user_data["login"]} is email {user_data["email"]} is correct. Sending email')
-
-            password: str = change_password_form.password.data
+            try:
+                password: str = change_password_form.password.data
+                SendMail.send_mail(password=password, login=login)
+                flash(f'the password succesfully changed and was sent at Your email')
+            except Exception:
+                flash(f'the password was not sent due to internal issues')
+                return redirect(url_for('remind_password'))
+                        
             hash_password: str = generate_password_hash(password)
             UserDbInterface.update_password(login, hash_password)
-
-            subject = 'From Tic-tac app'
-            email_message: str = (f'Hello {user_data["name"]}! '
-                                  f'\nThis is tic_tac support team. Your NEW password is {password}. '
-                                  f'\n\nLooking forward You playing in our app!')
-            msg = Message(body=email_message,
-                          sender='seregasun@list.ru',
-                          recipients=[user_data["email"]],
-                          subject=subject)
-            mail.send(msg)
-            flash(f'the password was sent at Your email')
             return redirect(url_for('entry_point'))
 
         flash(f'please set correct login or email which you used for registration')
@@ -256,6 +253,22 @@ def remind_password():
                            change_password_form=change_password_form)
 
 
+@app.route('/logout')
+def log_out():
+    """
+    View function which is responsible for User log out. It deletes login from sesion and 
+    redirect to entry_point stage
+    """
+    if not session.get('login'):
+        abort(401)
+ 
+    Game.restart_game_with_new_players()
+    players = Players()
+    session['players_data'] = players.players_data
+    session.pop('login')
+    return redirect(url_for('entry_point'))
+
+
 @app.errorhandler(werkzeug.exceptions.HTTPException)
 def handle_exception(e):
 
@@ -263,14 +276,14 @@ def handle_exception(e):
         view_logger.info(f'Error handler starting to work. Exception info {e}')
         error_message = 'Please make authorization'
         return render_template('error_handler.html', error_message=error_message, now=datetime.datetime.utcnow())
+    
     elif isinstance(e, werkzeug.exceptions.NotFound):
-        view_logger.info(f'Error handler starting to work. Exception info {e}')
+        view_logger.info(f'Error handler starting to work. Exception info {e.description}')
         error_message = 'Incorrect URL'
         return render_template('error_handler.html', error_message=error_message, now=datetime.datetime.utcnow())
-    view_logger.info(f'Error handler starting to work. Exception info {e}')
-    error_message = 'Ooops! Something goes wrong'
+
     return render_template('Something goes wrong', error_message=error_message, now=datetime.datetime.utcnow())
 
 
 if __name__ == '__main__':
-    app.run(port=5001)
+    app.run()

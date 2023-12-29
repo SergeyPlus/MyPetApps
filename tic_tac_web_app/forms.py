@@ -1,7 +1,7 @@
 from typing import List
-from flask_wtf import Form, FlaskForm
+from flask_wtf import FlaskForm
 from wtforms import StringField, EmailField, TelField, PasswordField, IntegerField
-from wtforms.validators import InputRequired, ValidationError, Email, Length, NumberRange, EqualTo
+from wtforms.validators import ValidationError, Email, Length, EqualTo
 import re
 
 

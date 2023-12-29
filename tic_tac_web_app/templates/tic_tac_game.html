@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% block title %}Start game{% endblock %}
+{% block title %}Game{% endblock %}
 {% block head %}
     {{ super() }}
 {% endblock %}
@@ -102,10 +102,9 @@
         {% elif game_render_form == 'set_player_names' %}
             <form class="form-contact" method="post" id="player_names">
                 <h3>INTRODUCTION</h3>
-
                 <p><label>Player 1: </label> <input type="text" name="player_1_name" value="" required/></p>
                 <p><label>Player 2: </label> <input type="text" name="player_2_name" value="" required/></p>
-                <label>Play the game: </label><button type="submit" class="btn btn-primary" formmethod="post" formaction="{{ url_for('tic_tac_game_players_introduction', change_game=0) }}">Start</button>
+                <label>Play the game: </label><button type="submit" class="btn btn-primary" formmethod="post" formaction="{{ url_for('tic_tac_game_players_introduction') }}">Start</button>
             </form>
         {% endif %}
 
