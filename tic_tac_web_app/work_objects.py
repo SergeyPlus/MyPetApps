@@ -36,13 +36,13 @@ class Players:
     
         
     @classmethod
-    def clear_for_new_game(cls):
-        cls.name_1 = ''
-        cls.name_2: str = ''
-        cls.score_1: int = 0
-        cls.score_2: int = 0
-        cls.sym_1: str = ''
-        cls.sym_2: str = ''
+    def clear_for_new_game(self):
+        self.name_1 = ''
+        self.name_2: str = ''
+        self.score_1: int = 0
+        self.score_2: int = 0
+        self.sym_1: str = ''
+        self.sym_2: str = ''
 
     def create_players_profiles(self, players_form) -> None:
         """
@@ -53,7 +53,7 @@ class Players:
         self.players_data['name_1'] = players_form.player_1_name.data
         self.players_data['name_2'] = players_form.player_2_name.data
         self.__identify_symbol()
-        Game.game_context['game_render_form'] = 'game'
+        Game.game_render_form = 'game'
 
     def __identify_symbol(self) -> None:
         """
@@ -86,73 +86,30 @@ class Game:
         'winner': ''
     }
 
-    @classmethod
-    def __repr__(cls):
-        return '; '.join([f'{key}: {value}' for key, value in cls.game_context.items()])
+    __game_context: Dict = {
+        'game_field': [0] * 9,
+        'tic_tac_table': {},
+        'game_render_form': 'set_player_names',
+        'winner': ''
+    }
+    def __init__(self):
+        self.__dict__ = self.game_context
+
+
+    # @property
+    # def game_render_form(self):
+    #     return self.game_context.get('game_render_form')
+   
+    # @game_render_form.setter
+    # def game_render_form(self, value: str):
+    #     self.game_context['game_render_form'] = value
+
+
+    def __repr__(self):
+        return '; '.join([f'{key}: {value}' for key, value in self.game_context.items()])
     
-    @classmethod
-    def __getattribute__(cls, name: str) -> Any:
-        if name == 'game_context':
-            return super().__getattribute__(cls, name)
-        raise AttributeError(f'PLease get correct attribute nme for {cls.__name__} class')
 
-    @classmethod
-    def restart_game_with_same_players(cls) -> None:
-        """
-        It clears attrs GAME_FIELD, winner and tic_tac_table.
-        Game_render_form is stays up because Players shouldn't be changed.
-        """
-        cls.game_context['winner'] = ''
-        cls.game_context['tic_tac_table'].clear()
-        cls.game_context['game_field'] = [0] * 9
-
-        wo_logger.info(
-            f'Data updated: {cls.game_context}')
-
-    @classmethod
-    def restart_game_with_new_players(cls) -> None:
-        """
-        It clears attrs game_field, winner, tic_tac_table and game_render_for.
-        """
-        players = Players()
-        cls.restart_game_with_same_players()
-        cls.game_context['game_render_form'] = 'set_player_names'
-
-        players.players_data = {
-            'name_1': '',
-            'name_2': '',
-            'sym_1': '0',
-            'sym_2': 'x',
-            'score_1': 0,
-            'score_2': 0
-        }
-
-        wo_logger.info(f'Data cleared: {cls}')
-        wo_logger.info(f'Players_data cleared as well: {players}')
-
-    @classmethod
-    def game_manager(cls, response: Dict) -> None:
-        """
-        The method calls functions __complete_field and __check_winner after symbols per turn
-        checking
-        """
-        if not isinstance(response, dict):
-            raise TypeError('The response type for game_manager method should be a dict')
-        
-        elif len(response) != 9:
-            raise IndexError('The response should consists of 9 keys and values pairs')
-        
-        if not cls.__check_symbols_quantity_for_turn(response):
-            raise ValueError("The checking of symbols quantity passed not well")
-                
-        wo_logger.info(f'The checking of symbols quantity passed well')
-        
-        cls.__complete_field(response)
-        cls.__check_winner()
-        wo_logger.info(f'Game context {cls.game_context}')
-
-    @classmethod
-    def __complete_field(cls, turn_dict: Dict) -> None:
+    def __complete_field(self, turn_dict: Dict) -> None:
         """
         This function puts integers into game_field according to Players turns. Index of game_field identifying
         through key of received dict (turn_dic) - the last symbol is a number of cell.
@@ -166,22 +123,22 @@ class Game:
                 player_turn: str = value
                 node_index: int = int(key[-1])
 
-                cls.game_context['tic_tac_table'][key] = f'__{value}__'
-                wo_logger.info(f"The turn was recorded in Game successfully {cls.game_context.get('tic_tac_table')}")
+                self.game_context['tic_tac_table'][key] = f'__{value}__'
+                wo_logger.info(f"The turn was recorded in Game successfully {self.game_context.get('tic_tac_table')}")
                 break
         wo_logger.info(f'Received symbol is {player_turn} and index for game_field {node_index}')
 
         if player_turn.lower() == Constants.SYM_CROSS.value:
-            cls.game_context['game_field'][node_index] = Constants.CROSS.value
+            self.game_context['game_field'][node_index] = Constants.CROSS.value
             wo_logger.info(f'Value to the game_field list - {1}')
         elif player_turn == Constants.SYM_ZERO.value:
-            cls.game_context['game_field'][node_index] = Constants.ZERO.value
+            self.game_context['game_field'][node_index] = Constants.ZERO.value
             wo_logger.info(f'Value to the game_field list - {10}')
         else:
             raise ValueError('Player puts incorrect symbol')
 
-    @classmethod
-    def __horizontal_check(cls) -> List[int]:
+
+    def __horizontal_check(self) -> List[int]:
         """
         Checking of values on horizontal lines
         _ _ _
@@ -190,18 +147,18 @@ class Game:
         """
         horizontal_check: List[int] = []
         summ: int = 0
-        for i in range(0, len(cls.game_context['game_field']), 3):
+        for i in range(0, len(self.game_context['game_field']), 3):
             for k in range(3):
                 k += i
-                summ += cls.game_context['game_field'][k]
+                summ += self.game_context['game_field'][k]
                 if k == (i + 2):
                     horizontal_check.append(summ)
                     summ = 0
         wo_logger.info(f'Calculated horizontal list {horizontal_check}')
         return horizontal_check
 
-    @classmethod
-    def __vertical_check(cls) -> List[int]:
+
+    def __vertical_check(self) -> List[int]:
         """
         Checking of values on vertical lines 
         _ _ X
@@ -211,17 +168,17 @@ class Game:
         vertical_check: List[int] = []
         summ: int = 0
         for i in range(3):
-            for k in range(0, len(cls.game_context['game_field']), 3):
+            for k in range(0, len(self.game_context['game_field']), 3):
                 k += i
-                summ += cls.game_context['game_field'][k]
+                summ += self.game_context['game_field'][k]
                 if k == (i + 6):
                     vertical_check.append(summ)
                     summ = 0
         wo_logger.info(f'Calculated vertical list {vertical_check}')
         return vertical_check
 
-    @classmethod
-    def __diagonals_check(cls) -> Tuple:
+
+    def __diagonals_check(self) -> Tuple:
         """
         Checking of values on diagonals lines 
         X _ X
@@ -229,60 +186,60 @@ class Game:
         X _ X
         """
 
-        diagonal_check_1 = sum([cls.game_context['game_field'][i] for i in (0, 4, 8)])
+        diagonal_check_1 = sum([self.game_context['game_field'][i] for i in (0, 4, 8)])
         wo_logger.info(f'Calculated diagonal_1 {diagonal_check_1}')
 
-        diagonal_check_2 = sum([cls.game_context['game_field'][i] for i in (2, 4, 6)])
+        diagonal_check_2 = sum([self.game_context['game_field'][i] for i in (2, 4, 6)])
         wo_logger.info(f'Calculated diagonal_2 {diagonal_check_2}')
         return diagonal_check_1, diagonal_check_2
 
-    @classmethod
-    def __check_winner(cls) -> None:
+
+    def __check_winner(self) -> None:
         """
         If summ is 30 winner the player who puts '0'.
         If summ is 3 winner the player who puts 'x'.
         Checking makes based on inspection of sum cells in horizontal        
         """
         wo_logger.info(f'Starting checking of the winner')
-        horizontal_check: List[int] = cls.__horizontal_check()
-        vertical_check: List[int] = cls.__vertical_check()
-        diagonals_check: List = cls.__diagonals_check()
+        horizontal_check: List[int] = self.__horizontal_check()
+        vertical_check: List[int] = self.__vertical_check()
+        diagonals_check: List = self.__diagonals_check()
         
 
         if 3 in horizontal_check or 3 in vertical_check or 3 in diagonals_check:
-            cls.__identify_winner(Constants.SYM_CROSS.value)
+            self.__identify_winner(Constants.SYM_CROSS.value)
 
         elif 30 in horizontal_check or 30 in vertical_check or 30 in diagonals_check:
-            cls.__identify_winner(Constants.SYM_ZERO.value)
+            self.__identify_winner(Constants.SYM_ZERO.value)
 
-        wo_logger.info(f'Before win-win checking. {cls.game_context}')
-        if not cls.game_context['winner'] and len(cls.game_context.get('tic_tac_table', {})) == 9:
+        wo_logger.info(f'Before win-win checking. {self.game_context}')
+        if not self.game_context['winner'] and len(self.game_context.get('tic_tac_table', {})) == 9:
             wo_logger.info(f"Win - Win situation")
-            cls.__identify_winner('win-win')
+            self.__identify_winner('win-win')
         
-    @classmethod
-    def __identify_winner(cls, sym) -> None:
+ 
+    def __identify_winner(self, sym) -> None:
         """
         It initializes winner value. Put their Player instance
         """
         wo_logger.info(f'There is a win situation with {sym}')
         players = Players()
         if sym == players.players_data['sym_1']:
-            cls.game_context['winner'] = players.players_data['name_1']
+            self.game_context['winner'] = players.players_data['name_1']
             players.players_data['score_1'] += 1
         elif sym == players.players_data['sym_2']:
-            cls.game_context['winner'] = players.players_data['name_2']
+            self.game_context['winner'] = players.players_data['name_2']
             players.players_data['score_2'] += 1
         else:
             players.players_data['score_1'] += 1
             players.players_data['score_2'] += 1
-            cls.game_context['winner'] = f" both players {players.players_data['name_1']} and {players.players_data['name_2']} win"
+            self.game_context['winner'] = f" both players {players.players_data['name_1']} and {players.players_data['name_2']} win"
         wo_logger.info(
-            f'Winner name {cls}. Score player_1 and player_2 {players}')
-        cls.__finalize_field()
+            f'Winner name {self}. Score player_1 and player_2 {players}')
+        self.__finalize_field()
 
-    @classmethod
-    def __check_symbols_quantity_for_turn(cls, resp: Dict) -> bool:
+
+    def __check_symbols_quantity_for_turn(self, resp: Dict) -> bool:
         """
         The function checks quantity symbols which player put during his turn. It's not possible make
         more than 1 symbols
@@ -299,33 +256,33 @@ class Game:
                 return False
         return count == 1
 
-    @classmethod
-    def __finalize_field(cls) -> None:
+
+    def __finalize_field(self) -> None:
         """
         In case of win situation it's necessary to render final field and in this case empty cells
         should be completed by such symbols _____
         """
-        for key, value in cls.game_context['tic_tac_table'].items():
+        for key, value in self.game_context['tic_tac_table'].items():
             wo_logger.info(f'From __finalize_field {key} , {value}')
             if not value:
-                cls.game_context['tic_tac_table'][key] = '_____'
-        wo_logger.info(f'Finalizing field starting. From now all field cells are completed {cls.game_context}')
+                self.game_context['tic_tac_table'][key] = '_____'
+        wo_logger.info(f'Finalizing field starting. From now all field cells are completed {self.game_context}')
 
 
 class Login:
     """
     Includes methods which allows to check login and password during log in
     """
-    @classmethod
-    def check_login(cls, form) -> bool:
+
+    def check_login(self, form) -> bool:
         """
         Checks is there login in tic_tac.db if login is existed User cannot take it and should create new one
         """
         user_data: UserDb = UserDbInterface.get_user_data(form.login.data)
         return not user_data['login']
 
-    @classmethod
-    def check_login_and_password(cls, form) -> bool:
+  
+    def check_login_and_password(self, form) -> bool:
         """
         Checks are there password and login in tic_tac.db. If so the User is authorized.
         """
@@ -351,6 +308,70 @@ class SendMail:
                         recipients=[user_data["email"]],
                         subject=subject)
         mail.send(msg)
+
+
+class GameManager:
+    def __init__(self):
+        self.players = Players()
+        self.game = Game()
+
+    def game_manager(self, response: Dict) -> None:
+        """
+        The method calls functions __complete_field and __check_winner after symbols per turn
+        checking
+        """
+        if not isinstance(response, dict):
+            raise TypeError('The response type for game_manager method should be a dict')
+        
+        elif len(response) != 9:
+            raise IndexError('The response should consists of 9 keys and values pairs')
+        
+        if not self.game.__check_symbols_quantity_for_turn(response):
+            raise ValueError("The checking of symbols quantity passed not well")
+                
+        wo_logger.info(f'The checking of symbols quantity passed well')
+        
+        self.game.__complete_field(response)
+        self.game.__check_winner()
+        wo_logger.info(f'Game context {self.game_context}')
+
+    def restart_game_with_same_players(self) -> None:
+        """
+        It clears attrs GAME_FIELD, winner and tic_tac_table.
+        Game_render_form is stays up because Players shouldn't be changed.
+        """
+        self.game.game_context['winner'] = ''
+        self.game.game_context['tic_tac_table'].clear()
+        self.game.game_context['game_field'] = [0] * 9
+
+        wo_logger.info(
+            f'Data updated: {self.game_context}')
+
+    def restart_game_with_new_players(self) -> None:
+        """
+        It clears attrs game_field, winner, tic_tac_table and game_render_for.
+        """
+   
+        self.restart_game_with_same_players()
+        self.game.game_context['game_render_form'] = 'set_player_names'
+
+        self.players.players_data = {
+            'name_1': '',
+            'name_2': '',
+            'sym_1': '0',
+            'sym_2': 'x',
+            'score_1': 0,
+            'score_2': 0
+        }
+
+        wo_logger.info(f'Data cleared: {self}')
+        wo_logger.info(f'Players_data cleared as well: {self.players}')
+
+    def change_reneder_form(self, regim: str) -> None:
+        self.game.game_context['game_render_form'] = regim
+
+
+
 
 if __name__ == '__main__':
     ...
