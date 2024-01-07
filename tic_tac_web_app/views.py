@@ -112,17 +112,17 @@ def tic_tac_game_players_introduction():
 
     game_manager: GameManager = GameManager()
     game_manager.change_reneder_form('set_player_names')
-    session['game_data'] = game_manager.game.game_context
+    session['game_data'] = game_manager.game.get_game_data()
     view_logger.info(
-        f'Players introduction. Game_render_form: {game_manager.game.game_context}')
+        f'Players introduction. Game_render_form: {game_manager.game.get_game_data()}')
 
     form_players = PlayersForms(meta={'csrf': False})
-    if form_players.validate_on_submit() and game_manager.game.game_context['game_render_form'] == 'set_player_names':
+    if form_players.validate_on_submit() and game_manager.game.get_game_data()['game_render_form'] == 'set_player_names':
         view_logger.info(f'The players form is validated')
         game_manager.players.create_players_profiles(form_players)
         game_manager.change_reneder_form('game')
-        session['players_data'] = game_manager.players.players_data
-        session['game_data'] = game_manager.game.game_context
+        session['players_data'] = game_manager.players.get_players_data()
+        session['game_data'] = game_manager.game.get_game_data()
 
         view_logger.info(session.get("players_data"))
         view_logger.info(session.get("game_data"))
@@ -159,10 +159,10 @@ def tic_tac_game_start_game():
             flash(message='something goes wrong, please start again')
             game_manager.restart_game_with_same_players()
 
-        session['players_data'] = game_manager.players.players_data
+        session['players_data'] = game_manager.players.get_players_data()
         return redirect(url_for('tic_tac_game_start_game'))
 
-    session['game_data'] = game_manager.game.game_context
+    session['game_data'] = game_manager.game.get_game_data()
     view_logger.info(f'Game_render_form {session.get("game_data")["game_render_form"]}')
     return render_template(
         'tic_tac_game.html',
@@ -202,11 +202,11 @@ def tic_tac_game_change_game(code):
         view_logger.info(f'Worked leave game: code = {code}')
         game_manager.restart_game_with_new_players()
  
-        session['players_data'] = game_manager.players.players_data
+        session['players_data'] = game_manager.players.get_players_data()
         return redirect(url_for('get_main_page'))
 
     view_logger.info(
-        f'Session data winner {game_manager.game.game_context}')
+        f'Session data winner {game_manager.game.get_game_data()}')
 
     return render_template(
         'tic_tac_game.html',
@@ -262,7 +262,7 @@ def log_out():
         abort(401)
     game_manager: GameManager = GameManager()
     game_manager.restart_game_with_new_players()
-    session['players_data'] = game_manager.players.players_data
+    session['players_data'] = game_manager.players.get_players_data()
     session.pop('login')
     return redirect(url_for('entry_point'))
 

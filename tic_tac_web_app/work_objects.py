@@ -19,7 +19,7 @@ class Players:
     """
     Monostate class allows to initialize instances and deal with them as with Dict
     """
-    players_data = {
+    _players_data = {
         'name_1': '',
         'name_2': '',
         'sym_1': '0',
@@ -29,12 +29,15 @@ class Players:
     }
 
     def __init__(self):
-        self.__dict__ = self.players_data
+        self.__dict__ = self._players_data
 
     def __repr__(self):
-        return '; '.join([f'{key}: {value}' for key, value in self.players_data.items()])
+        return '; '.join([f'{key}: {value}' for key, value in self._players_data.items()])
     
-        
+    def get_players_data(self) -> Dict:
+        return self._players_data
+    
+
     def clear_for_new_game(self):
         self.name_1 = ''
         self.name_2: str = ''
@@ -49,8 +52,8 @@ class Players:
         use during the game
         """
 
-        self.players_data['name_1'] = players_form.player_1_name.data
-        self.players_data['name_2'] = players_form.player_2_name.data
+        self._players_data['name_1'] = players_form.player_1_name.data
+        self._players_data['name_2'] = players_form.player_2_name.data
         self._identify_symbol()
  
 
@@ -60,10 +63,10 @@ class Players:
         """
         rand_num: int = random.randint(0, 1)
         if rand_num:
-            self.players_data['sym_1'] = 'x'
-            self.players_data['sym_2'] = '0'
+            self._players_data['sym_1'] = 'x'
+            self._players_data['sym_2'] = '0'
         wo_logger.info(
-            f'Identified symbols for Player_1 and Player_2 {self.players_data}')
+            f'Identified symbols for Player_1 and Player_2 {self._players_data}')
 
 
 class Constants(Enum):
@@ -78,7 +81,7 @@ class Game:
     # This list contents of 0 by default and this list collects values of each turn made by Players during the round of
     # game. If Player puts "X" correspondent value of the list will be incremented by 1, if "0" incremented by 10
 
-    game_context: Dict = {
+    _game_data: Dict = {
         'game_field': [0] * 9,
         'tic_tac_table': {},
         'game_render_form': 'set_player_names',
@@ -87,20 +90,17 @@ class Game:
 
 
     def __init__(self):
-        self.__dict__ = self.game_context
+        self.__dict__ = self._game_data
 
 
-    # @property
-    # def game_render_form(self):
-    #     return self.game_context.get('game_render_form')
-   
-    # @game_render_form.setter
-    # def game_render_form(self, value: str):
-    #     self.game_context['game_render_form'] = value
-
+    def get_game_data(self) -> Dict:
+        return self._game_data
+    
+    def set_game_data(self, update_game_data: Dict) -> None:
+        self._game_data = update_game_data
 
     def __repr__(self):
-        return '; '.join([f'{key}: {value}' for key, value in self.game_context.items()])
+        return '; '.join([f'{key}: {value}' for key, value in self._game_data.items()])
     
 
     def _complete_field(self, turn_dict: Dict) -> None:
@@ -117,16 +117,16 @@ class Game:
                 player_turn: str = value
                 node_index: int = int(key[-1])
 
-                self.game_context['tic_tac_table'][key] = f'__{value}__'
-                wo_logger.info(f"The turn was recorded in Game successfully {self.game_context.get('tic_tac_table')}")
+                self.get_game_data()['tic_tac_table'][key] = f'__{value}__'
+                wo_logger.info(f"The turn was recorded in Game successfully {self.get_game_data().get('tic_tac_table')}")
                 break
         wo_logger.info(f'Received symbol is {player_turn} and index for game_field {node_index}')
 
         if player_turn.lower() == Constants.SYM_CROSS.value:
-            self.game_context['game_field'][node_index] = Constants.CROSS.value
+            self.get_game_data()['game_field'][node_index] = Constants.CROSS.value
             wo_logger.info(f'Value to the game_field list - {1}')
         elif player_turn == Constants.SYM_ZERO.value:
-            self.game_context['game_field'][node_index] = Constants.ZERO.value
+            self.get_game_data()['game_field'][node_index] = Constants.ZERO.value
             wo_logger.info(f'Value to the game_field list - {10}')
         else:
             raise ValueError('Player puts incorrect symbol')
@@ -141,10 +141,10 @@ class Game:
         """
         horizontal_check: List[int] = []
         summ: int = 0
-        for i in range(0, len(self.game_context['game_field']), 3):
+        for i in range(0, len(self.get_game_data()['game_field']), 3):
             for k in range(3):
                 k += i
-                summ += self.game_context['game_field'][k]
+                summ += self.get_game_data()['game_field'][k]
                 if k == (i + 2):
                     horizontal_check.append(summ)
                     summ = 0
@@ -162,9 +162,9 @@ class Game:
         vertical_check: List[int] = []
         summ: int = 0
         for i in range(3):
-            for k in range(0, len(self.game_context['game_field']), 3):
+            for k in range(0, len(self.get_game_data()['game_field']), 3):
                 k += i
-                summ += self.game_context['game_field'][k]
+                summ += self.get_game_data()['game_field'][k]
                 if k == (i + 6):
                     vertical_check.append(summ)
                     summ = 0
@@ -180,10 +180,10 @@ class Game:
         X _ X
         """
 
-        diagonal_check_1 = sum([self.game_context['game_field'][i] for i in (0, 4, 8)])
+        diagonal_check_1 = sum([self.get_game_data()['game_field'][i] for i in (0, 4, 8)])
         wo_logger.info(f'Calculated diagonal_1 {diagonal_check_1}')
 
-        diagonal_check_2 = sum([self.game_context['game_field'][i] for i in (2, 4, 6)])
+        diagonal_check_2 = sum([self.get_game_data()['game_field'][i] for i in (2, 4, 6)])
         wo_logger.info(f'Calculated diagonal_2 {diagonal_check_2}')
         return diagonal_check_1, diagonal_check_2
 
@@ -206,8 +206,8 @@ class Game:
         elif 30 in horizontal_check or 30 in vertical_check or 30 in diagonals_check:
             self._identify_winner(Constants.SYM_ZERO.value)
 
-        wo_logger.info(f'Before win-win checking. {self.game_context}')
-        if not self.game_context['winner'] and len(self.game_context.get('tic_tac_table', {})) == 9:
+        wo_logger.info(f'Before win-win checking. {self.get_game_data()}')
+        if not self.get_game_data()['winner'] and len(self.get_game_data().get('tic_tac_table', {})) == 9:
             wo_logger.info(f"Win - Win situation")
             self._identify_winner('win-win')
         
@@ -218,16 +218,16 @@ class Game:
         """
         wo_logger.info(f'There is a win situation with {sym}')
         players = Players()
-        if sym == players.players_data['sym_1']:
-            self.game_context['winner'] = players.players_data['name_1']
-            players.players_data['score_1'] += 1
-        elif sym == players.players_data['sym_2']:
-            self.game_context['winner'] = players.players_data['name_2']
-            players.players_data['score_2'] += 1
+        if sym == players._players_data['sym_1']:
+            self.get_game_data()['winner'] = players._players_data['name_1']
+            players._players_data['score_1'] += 1
+        elif sym == players._players_data['sym_2']:
+            self.get_game_data()['winner'] = players._players_data['name_2']
+            players._players_data['score_2'] += 1
         else:
-            players.players_data['score_1'] += 1
-            players.players_data['score_2'] += 1
-            self.game_context['winner'] = f" both players {players.players_data['name_1']} and {players.players_data['name_2']} win"
+            players._players_data['score_1'] += 1
+            players._players_data['score_2'] += 1
+            self.get_game_data()['winner'] = f" both players {players._players_data['name_1']} and {players._players_data['name_2']} win"
         wo_logger.info(
             f'Winner name {self}. Score player_1 and player_2 {players}')
         self._finalize_field()
@@ -256,11 +256,11 @@ class Game:
         In case of win situation it's necessary to render final field and in this case empty cells
         should be completed by such symbols _____
         """
-        for key, value in self.game_context['tic_tac_table'].items():
+        for key, value in self.get_game_data()['tic_tac_table'].items():
             wo_logger.info(f'From __finalize_field {key} , {value}')
             if not value:
-                self.game_context['tic_tac_table'][key] = '_____'
-        wo_logger.info(f'Finalizing field starting. From now all field cells are completed {self.game_context}')
+                self.get_game_data()['tic_tac_table'][key] = '_____'
+        wo_logger.info(f'Finalizing field starting. From now all field cells are completed {self.get_game_data()}')
 
 
 class Login:
@@ -331,19 +331,19 @@ class GameManager:
         
         self.game._complete_field(response)
         self.game._check_winner()
-        wo_logger.info(f'Game context {self.game.game_context}')
+        wo_logger.info(f'Game context {self.game.get_game_data()}')
 
     def restart_game_with_same_players(self) -> None:
         """
         It clears attrs GAME_FIELD, winner and tic_tac_table.
         Game_render_form is stays up because Players shouldn't be changed.
         """
-        self.game.game_context['winner'] = ''
-        self.game.game_context['tic_tac_table'].clear()
-        self.game.game_context['game_field'] = [0] * 9
+        self.game.get_game_data()['winner'] = ''
+        self.game.get_game_data()['tic_tac_table'].clear()
+        self.game.get_game_data()['game_field'] = [0] * 9
 
         wo_logger.info(
-            f'Data updated: {self.game.game_context}')
+            f'Data updated: {self.game.get_game_data()}')
 
     def restart_game_with_new_players(self) -> None:
         """
@@ -351,9 +351,9 @@ class GameManager:
         """
    
         self.restart_game_with_same_players()
-        self.game.game_context['game_render_form'] = 'set_player_names'
+        self.game.get_game_data()['game_render_form'] = 'set_player_names'
 
-        self.players.players_data = {
+        self.players._players_data = {
             'name_1': '',
             'name_2': '',
             'sym_1': '0',
@@ -371,7 +371,7 @@ class GameManager:
         If regim is "game" it renders form with game field
         If regim is "set_player_names" it renders form with players introduction
         """
-        self.game.game_context['game_render_form'] = regim
+        self.game.get_game_data()['game_render_form'] = regim
 
 
 
