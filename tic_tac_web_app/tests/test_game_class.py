@@ -1,21 +1,22 @@
 import unittest
 from typing import Dict, List, Tuple
 
-from work_objects import Game, Players
+from work_objects import GameManager
 
 class TestGame(unittest.TestCase):
 
     def setUp(self) -> None:
-        self.players = Players()
+        self.game_manager = GameManager()
 
     def tearDown(self) -> None:
-        Game.game_context = {
+        self.game_manager.game.game_context = {
             'game_field': [0] * 9,
             'tic_tac_table': {},
             'game_render_form': 'game',
             'winner': ''
         }
-        self.players.clear_for_new_game
+        self.game_manager.players.clear_for_new_game()
+     
 
     def test_context_game_defaulting(self):
         expect_game_context: Dict = {
@@ -32,9 +33,9 @@ class TestGame(unittest.TestCase):
             'winner': 'Sergey'
         }
 
-        Game.game_context = test_game_context
-        Game.restart_game_with_same_players()
-        result: Dict = Game.game_context
+        self.game_manager.game.game_context = test_game_context
+        self.game_manager.restart_game_with_same_players()
+        result: Dict = self.game_manager.game.game_context
         self.assertEqual(expect_game_context, result, "The data in game_context didn\'t cleared")
  
     def test_type_response_from_player_for_game_manager(self):
@@ -48,10 +49,10 @@ class TestGame(unittest.TestCase):
         test_tuple: Tuple = ()
 
         with self.assertRaises(TypeError):
-            Game.game_manager(test_list)
-            Game.game_manager(test_string)
-            Game.game_manager(test_int)
-            Game.game_manager(test_tuple)
+            self.game_manager.game_manager(test_list)
+            self.game_manager.game_manager(test_string)
+            self.game_manager.game_manager(test_int)
+            self.game_manager.game_manager(test_tuple)
 
     def test_checking_of_more_than_two_symbols_quantity_per_turn(self) -> None:
         """
@@ -64,7 +65,7 @@ class TestGame(unittest.TestCase):
             }
             
         with self.assertRaises(ValueError):
-            Game.game_manager(test_value)
+            self.game_manager.game_manager(test_value)
 
     def test_checking_of_empty_symbols_quantity_per_turn(self) -> None:
         """
@@ -77,7 +78,7 @@ class TestGame(unittest.TestCase):
             }
             
         with self.assertRaises(ValueError):
-            Game.game_manager(test_value)
+            self.game_manager.game_manager(test_value)
 
     def test_field_completing_after_player_turn_zero(self) -> None:
         """
@@ -93,8 +94,8 @@ class TestGame(unittest.TestCase):
             'sym_6': '', 'sym_7': None, 'sym_8': '0'
             }
         
-        Game.game_manager(test_value_zero)
-        result: List = Game.game_context['game_field']
+        self.game_manager.game_manager(test_value_zero)
+        result: List = self.game_manager.game.game_context['game_field']
         self.assertEqual(expect_res_zero, result, "Game_field was recorded with mistake")
                
     def test_field_completing_after_player_turn_cross(self) -> None:
@@ -110,8 +111,8 @@ class TestGame(unittest.TestCase):
             'sym_3': '', 'sym_4': 'x', 'sym_5': '',
             'sym_6': '', 'sym_7': None, 'sym_8': ''
             }
-        Game.game_manager(test_value)
-        result: List = Game.game_context['game_field']
+        self.game_manager.game_manager(test_value)
+        result: List = self.game_manager.game.game_context['game_field']
         self.assertEqual(expect_res, result, "Game_field was recorded with mistake")
 
     def test_field_completing_if_player_response_more_than_nine_keys(self) -> None:
@@ -126,7 +127,7 @@ class TestGame(unittest.TestCase):
             'sym_6': '', 'sym_7': None, 'sym_8': '', 'sym_9': ''
             }
         with self.assertRaises(IndexError):
-            Game.game_manager(test_value)
+            self.game_manager.game_manager(test_value)
 
     def test_checking_of_symbol_value_from_player(self) -> None:
         """
@@ -140,7 +141,7 @@ class TestGame(unittest.TestCase):
             }
             
         with self.assertRaises(ValueError):
-            Game.game_manager(test_value)
+            self.game_manager.game_manager(test_value)
 
     def test_calculation_for_winner_search(self) -> None:
         """
@@ -156,7 +157,7 @@ class TestGame(unittest.TestCase):
             'game_render_form': 'game',
             'winner': ''
         }
-        Game.game_context = test_game_context
+        self.game_manager.game.game_context: Dict = test_game_context
         
         test_value: Dict = {
             'sym_0': '', 'sym_1': '', 'sym_2': None, 
@@ -172,10 +173,10 @@ class TestGame(unittest.TestCase):
         'score_1': 0,
         'score_2': 0
         }
-        self.players.players_data: Dict = test_players_data
+        self.game_manager.players.players_data: Dict = test_players_data
 
 
-        Game.game_manager(test_value)
+        self.game_manager.game_manager(test_value)
         expect_players_data = {
         'name_1': 'Player_1',
         'name_2': 'Player_2',
@@ -185,7 +186,7 @@ class TestGame(unittest.TestCase):
         'score_2': 1
         }
         
-        self.assertEqual(expect_players_data, self.players.players_data, "Incorrect game result")
+        self.assertEqual(expect_players_data, self.game_manager.players.players_data, "Incorrect game result")
 
     def test_checking_of_field_completing_after_win_situation(self) -> None:
         """
@@ -202,9 +203,9 @@ class TestGame(unittest.TestCase):
             'game_render_form': 'game',
             'winner': ''
         }
-        Game.game_context = test_game_context
+        self.game_manager.game.game_context: Dict = test_game_context
         
-        self.players.players_data: Dict = {
+        self.game_manager.players.players_data: Dict = {
         'name_1': 'Player_1',
         'name_2': 'Player_2',
         'sym_1': '0',
@@ -218,7 +219,7 @@ class TestGame(unittest.TestCase):
             'nod_3': '', 'nod_4': '', 'nod_5': None,
             'nod_6': '', 'nod_7': '', 'nod_8': 'x'
             }
-        Game.game_manager(test_value)
+        self.game_manager.game_manager(test_value)
 
         expect_value: Dict = {
             'nod_0': '_____', 'nod_1': '_____', 'nod_2': '__x__', 
@@ -227,7 +228,7 @@ class TestGame(unittest.TestCase):
         }
       
         self.assertDictEqual(
-            expect_value, Game.game_context['tic_tac_table'], "Tic-tac_table completed incorrectly")
+            expect_value, self.game_manager.game.game_context['tic_tac_table'], "Tic-tac_table completed incorrectly")
 
     def test_win_win_situation(self) -> None:
         """
@@ -244,7 +245,7 @@ class TestGame(unittest.TestCase):
             'game_render_form': 'game',
             'winner': ''
         }
-        Game.game_context = test_game_context
+        self.game_manager.game.game_context: Dict = test_game_context
         
         test_value: Dict = {
             'sym_0': None, 'sym_1': None, 'sym_2': None, 
@@ -261,10 +262,10 @@ class TestGame(unittest.TestCase):
         'score_1': 0,
         'score_2': 0
         }
-        self.players.players_data: Dict = test_players_data
+        self.game_manager.players.players_data: Dict = test_players_data
 
 
-        Game.game_manager(test_value)
+        self.game_manager.game_manager(test_value)
         expect_players_data = {
         'name_1': 'Player_1',
         'name_2': 'Player_2',
@@ -275,8 +276,8 @@ class TestGame(unittest.TestCase):
         }
         
         self.assertEqual(
-            expect_players_data, self.players.players_data, "Win-win situation works incorrect as incorrect game result")
+            expect_players_data, self.game_manager.players.players_data, "Win-win situation works incorrect as incorrect game result")
         self.assertTrue(
-            Game.game_context['winner'] != '', 'Win-win situation works incorrect as there is no winner value')
+            self.game_manager.game.game_context['winner'] != '', 'Win-win situation works incorrect as there is no winner value')
 
        
