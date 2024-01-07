@@ -14,7 +14,7 @@ from typing import Dict
 from app import create_app
 
 from data_base import UserDbInterface, UserDb
-from work_objects import Game, Login, Players, SendMail, GameManager
+from work_objects import Login, SendMail, GameManager
 
 
 config.dictConfig(LoggerConfig.log_config_dict)
@@ -262,8 +262,7 @@ def log_out():
         abort(401)
     game_manager: GameManager = GameManager()
     game_manager.restart_game_with_new_players()
-    players = Players()
-    session['players_data'] = players.players_data
+    session['players_data'] = game_manager.players.players_data
     session.pop('login')
     return redirect(url_for('entry_point'))
 
