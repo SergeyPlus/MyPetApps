@@ -15,10 +15,10 @@ class TestGame(unittest.TestCase):
             'game_render_form': 'game',
             'winner': ''
         }
-        self.game_manager.game.set_game_data(default_game_data) 
+        for key, value in default_game_data.items():
+            self.game_manager[key] = value
         self.game_manager.players.clear_for_new_game()
      
-
     def test_context_game_defaulting(self):
         expect_game_context: Dict = {
             'game_field': [0] * 9,
@@ -34,9 +34,12 @@ class TestGame(unittest.TestCase):
             'winner': 'Sergey'
         }
 
-        self.game_manager.game.set_game_data(test_game_context)
+        for key, value in test_game_context.items():
+            self.game_manager[key] = value
+        
+
         self.game_manager.restart_game_with_same_players()
-        result: Dict = self.game_manager.game.get_game_data()
+        result: Dict = self.game_manager["game_data"]
         self.assertEqual(expect_game_context, result, "The data in game_context didn\'t cleared")
  
     def test_type_response_from_player_for_game_manager(self):
@@ -96,7 +99,7 @@ class TestGame(unittest.TestCase):
             }
         
         self.game_manager.game_manager(test_value_zero)
-        result: List = self.game_manager.game.get_game_data()['game_field']
+        result: List = self.game_manager["game_data"]['game_field']
         self.assertEqual(expect_res_zero, result, "Game_field was recorded with mistake")
                
     def test_field_completing_after_player_turn_cross(self) -> None:
@@ -113,7 +116,7 @@ class TestGame(unittest.TestCase):
             'sym_6': '', 'sym_7': None, 'sym_8': ''
             }
         self.game_manager.game_manager(test_value)
-        result: List = self.game_manager.game.get_game_data()['game_field']
+        result: List = self.game_manager["game_data"]['game_field']
         self.assertEqual(expect_res, result, "Game_field was recorded with mistake")
 
     def test_field_completing_if_player_response_more_than_nine_keys(self) -> None:
@@ -158,8 +161,10 @@ class TestGame(unittest.TestCase):
             'game_render_form': 'game',
             'winner': ''
         }
-        self.game_manager.game.set_game_data(test_game_context)
-        
+  
+        for key, value in test_game_context.items():
+            self.game_manager[key] = value
+            
         test_value: Dict = {
             'sym_0': '', 'sym_1': '', 'sym_2': None, 
             'sym_3': '', 'sym_4': '', 'sym_5': None,
@@ -174,7 +179,7 @@ class TestGame(unittest.TestCase):
         'score_1': 0,
         'score_2': 0
         }
-        self.game_manager.players._players_data: Dict = test_players_data
+        self.game_manager["players_data"]: Dict = test_players_data
 
 
         self.game_manager.game_manager(test_value)
@@ -187,7 +192,7 @@ class TestGame(unittest.TestCase):
         'score_2': 1
         }
         
-        self.assertEqual(expect_players_data, self.game_manager.players._players_data, "Incorrect game result")
+        self.assertEqual(expect_players_data, self.game_manager["players_data"], "Incorrect game result")
 
     def test_checking_of_field_completing_after_win_situation(self) -> None:
         """
@@ -204,9 +209,11 @@ class TestGame(unittest.TestCase):
             'game_render_form': 'game',
             'winner': ''
         }
-        self.game_manager.game.set_game_data(test_game_context)
+
+        for key, value in test_game_context.items():
+            self.game_manager[key] = value
         
-        self.game_manager.players._players_data: Dict = {
+        self.game_manager["players_data"]: Dict = {
         'name_1': 'Player_1',
         'name_2': 'Player_2',
         'sym_1': '0',
@@ -229,7 +236,7 @@ class TestGame(unittest.TestCase):
         }
       
         self.assertDictEqual(
-            expect_value, self.game_manager.game.get_game_data()['tic_tac_table'], "Tic-tac_table completed incorrectly")
+            expect_value, self.game_manager["game_data"]['tic_tac_table'], "Tic-tac_table completed incorrectly")
 
     def test_win_win_situation(self) -> None:
         """
@@ -246,7 +253,9 @@ class TestGame(unittest.TestCase):
             'game_render_form': 'game',
             'winner': ''
         }
-        self.game_manager.game.set_game_data(test_game_context)
+        for key, value in test_game_context.items():
+            self.game_manager[key] = value
+
         
         test_value: Dict = {
             'sym_0': None, 'sym_1': None, 'sym_2': None, 
@@ -263,7 +272,7 @@ class TestGame(unittest.TestCase):
         'score_1': 0,
         'score_2': 0
         }
-        self.game_manager.players._players_data: Dict = test_players_data
+        self.game_manager["players_data"]: Dict = test_players_data
 
 
         self.game_manager.game_manager(test_value)
@@ -277,8 +286,8 @@ class TestGame(unittest.TestCase):
         }
         
         self.assertEqual(
-            expect_players_data, self.game_manager.players._players_data, "Win-win situation works incorrect as incorrect game result")
+            expect_players_data, self.game_manager["players_data"], "Win-win situation works incorrect as incorrect game result")
         self.assertTrue(
-            self.game_manager.game.get_game_data()['winner'] != '', 'Win-win situation works incorrect as there is no winner value')
+            self.game_manager["game_data"]['winner'] != '', 'Win-win situation works incorrect as there is no winner value')
 
        
