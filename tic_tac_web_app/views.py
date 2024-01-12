@@ -269,7 +269,7 @@ def log_out():
 
 @app.errorhandler(werkzeug.exceptions.HTTPException)
 def handle_exception(e):
-
+    error_message = ''
     if isinstance(e, werkzeug.exceptions.Unauthorized):
         view_logger.info(f'Error handler starting to work. Exception info {e}')
         error_message = 'Please make authorization'

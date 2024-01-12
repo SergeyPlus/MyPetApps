@@ -277,7 +277,7 @@ class Login:
 class SendMail:
     
     @classmethod
-    def send_mail(password: str, login: str):
+    def send_mail(cls, password: str, login: str):
         """
         The method send the message with password to the User email which is used during
         registration
