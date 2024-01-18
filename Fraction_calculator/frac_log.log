@@ -1,0 +1,685 @@
+2024-01-18 10:43:45,522 : work_objects.py : __call__ : 180 : Calling instance of class <class 'work_objects.WorkWithData'>, with data 1 (2 / 3)
+2024-01-18 10:43:45,523 : work_objects.py : _check_format : 187 : Checking format of data 1 (2 / 3)
+2024-01-18 10:43:45,523 : work_objects.py : _check_format : 194 : Counter = 1
+2024-01-18 10:43:45,523 : work_objects.py : _check_format : 198 : Correct data
+2024-01-18 10:43:45,523 : work_objects.py : _upgrade_format : 201 : Upgrading format data if needed. Data 1 (2 / 3)
+2024-01-18 10:43:45,523 : work_objects.py : _upgrade_format : 204 : Upgrading is needed.
+2024-01-18 10:43:45,523 : work_objects.py : _upgrade_format : 206 : Denominator is 3, type is <class 'str'>
+2024-01-18 10:43:45,523 : work_objects.py : _upgrade_format : 208 : Numerator is 5, type is <class 'int'>
+2024-01-18 10:43:45,523 : work_objects.py : _upgrade_format : 210 : Returned data is 5 / 3,  type <class 'str'>
+2024-01-18 10:43:53,438 : work_objects.py : __call__ : 180 : Calling instance of class <class 'work_objects.WorkWithData'>, with data 3 / 4
+2024-01-18 10:43:53,438 : work_objects.py : _check_format : 187 : Checking format of data 3 / 4
+2024-01-18 10:43:53,438 : work_objects.py : _check_format : 194 : Counter = 1
+2024-01-18 10:43:53,438 : work_objects.py : _check_format : 198 : Correct data
+2024-01-18 10:43:53,438 : work_objects.py : _upgrade_format : 201 : Upgrading format data if needed. Data 3 / 4
+2024-01-18 10:43:53,438 : work_objects.py : _upgrade_format : 210 : Returned data is 3 / 4,  type <class 'str'>
+2024-01-18 10:43:56,452 : work_objects.py : __init__ : 13 : Initialization of data for Fraction instance ['5', '/', '3']
+2024-01-18 10:43:56,452 : work_objects.py : __init__ : 13 : Initialization of data for Fraction instance ['3', '/', '4']
+2024-01-18 10:43:56,452 : work_objects.py : __init__ : 167 : <class 'work_objects.Action'> initializing symbol: *
+2024-01-18 10:43:56,452 : work_objects.py : get_sign_type : 173 : Parent class <class 'work_objects.Multiple'>
+2024-01-18 10:43:56,452 : work_objects.py : __call__ : 100 : This is __call__ from class <work_objects.Multiple object at 0x7f8abb110ca0>
+2024-01-18 10:43:56,452 : work_objects.py : make_action : 135 : Making action - multiplication
+2024-01-18 10:43:56,453 : work_objects.py : make_action : 139 : Numerator - 15, denominator - 12
+2024-01-18 10:43:56,453 : work_objects.py : simple_fraction : 48 : Fraction simplifying. in the beginning (15, 12)
+2024-01-18 10:43:56,453 : work_objects.py : get_whole_part : 35 : Getting whole part in fraction
+2024-01-18 10:43:56,453 : work_objects.py : get_whole_part : 42 : There is a whole part, is 1
+2024-01-18 10:43:56,453 : work_objects.py : gcd : 23 : Starting to find common divider
+2024-01-18 10:43:56,453 : work_objects.py : gcd : 23 : Starting to find common divider
+2024-01-18 10:43:56,453 : work_objects.py : gcd : 27 : Commom divider founded - 1
+2024-01-18 10:43:56,453 : work_objects.py : simple_fraction : 55 : Final result (1, 3, 12)
+2024-01-18 10:43:56,453 : work_objects.py : print_fraction : 59 : Printing info. Final data is (1, 3, 12)
+2024-01-18 10:59:54,706 : work_objects.py : __call__ : 183 : Calling instance of class <class 'work_objects.WorkWithData'>, with data 1 (1 / 3)
+2024-01-18 10:59:54,712 : work_objects.py : _check_format : 190 : Checking format of data 1 (1 / 3)
+2024-01-18 10:59:54,712 : work_objects.py : _check_format : 197 : Counter = 1
+2024-01-18 10:59:54,712 : work_objects.py : _check_format : 201 : Correct data
+2024-01-18 10:59:54,712 : work_objects.py : _upgrade_format : 204 : Upgrading format data if needed. Data 1 (1 / 3)
+2024-01-18 10:59:54,712 : work_objects.py : _upgrade_format : 207 : Upgrading is needed.
+2024-01-18 10:59:54,712 : work_objects.py : _upgrade_format : 209 : Denominator is 3, type is <class 'str'>
+2024-01-18 10:59:54,712 : work_objects.py : _upgrade_format : 211 : Numerator is 4, type is <class 'int'>
+2024-01-18 10:59:54,712 : work_objects.py : _upgrade_format : 213 : Returned data is 4 / 3,  type <class 'str'>
+2024-01-18 11:00:00,573 : work_objects.py : __call__ : 183 : Calling instance of class <class 'work_objects.WorkWithData'>, with data 5 / 3
+2024-01-18 11:00:00,573 : work_objects.py : _check_format : 190 : Checking format of data 5 / 3
+2024-01-18 11:00:00,573 : work_objects.py : _check_format : 197 : Counter = 1
+2024-01-18 11:00:00,573 : work_objects.py : _check_format : 201 : Correct data
+2024-01-18 11:00:00,573 : work_objects.py : _upgrade_format : 204 : Upgrading format data if needed. Data 5 / 3
+2024-01-18 11:00:00,573 : work_objects.py : _upgrade_format : 213 : Returned data is 5 / 3,  type <class 'str'>
+2024-01-18 11:00:02,154 : work_objects.py : __init__ : 13 : Initialization of data for Fraction instance ['4', '/', '3']
+2024-01-18 11:00:02,154 : work_objects.py : __init__ : 13 : Initialization of data for Fraction instance ['5', '/', '3']
+2024-01-18 11:00:02,154 : work_objects.py : __init__ : 170 : <class 'work_objects.Action'> initializing symbol: *
+2024-01-18 11:00:02,154 : work_objects.py : get_sign_type : 176 : Parent class <class 'work_objects.Multiple'>
+2024-01-18 11:00:02,154 : work_objects.py : __call__ : 103 : This is __call__ from class <work_objects.Multiple object at 0x7feb23a0cca0>
+2024-01-18 11:00:02,154 : work_objects.py : make_action : 138 : Making action - multiplication
+2024-01-18 11:00:02,154 : work_objects.py : make_action : 142 : Numerator - 20, denominator - 9
+2024-01-18 11:00:02,154 : work_objects.py : simple_fraction : 51 : Fraction simplifying. in the beginning (20, 9)
+2024-01-18 11:00:02,155 : work_objects.py : get_whole_part : 38 : Getting whole part in fraction
+2024-01-18 11:00:02,155 : work_objects.py : get_whole_part : 45 : There is a whole part, is 2
+2024-01-18 11:00:02,155 : work_objects.py : gcd : 23 : Starting to find common divider
+2024-01-18 11:00:02,155 : work_objects.py : gcd : 26 : a = 2, b = 9
+2024-01-18 11:01:01,923 : work_objects.py : __call__ : 183 : Calling instance of class <class 'work_objects.WorkWithData'>, with data 1 (1 / 3)
+2024-01-18 11:01:01,923 : work_objects.py : _check_format : 190 : Checking format of data 1 (1 / 3)
+2024-01-18 11:01:01,924 : work_objects.py : _check_format : 197 : Counter = 1
+2024-01-18 11:01:01,924 : work_objects.py : _check_format : 201 : Correct data
+2024-01-18 11:01:01,924 : work_objects.py : _upgrade_format : 204 : Upgrading format data if needed. Data 1 (1 / 3)
+2024-01-18 11:01:01,924 : work_objects.py : _upgrade_format : 207 : Upgrading is needed.
+2024-01-18 11:01:01,924 : work_objects.py : _upgrade_format : 209 : Denominator is 3, type is <class 'str'>
+2024-01-18 11:01:01,924 : work_objects.py : _upgrade_format : 211 : Numerator is 4, type is <class 'int'>
+2024-01-18 11:01:01,924 : work_objects.py : _upgrade_format : 213 : Returned data is 4 / 3,  type <class 'str'>
+2024-01-18 11:01:07,584 : work_objects.py : __call__ : 183 : Calling instance of class <class 'work_objects.WorkWithData'>, with data 5 / 3
+2024-01-18 11:01:07,585 : work_objects.py : _check_format : 190 : Checking format of data 5 / 3
+2024-01-18 11:01:07,585 : work_objects.py : _check_format : 197 : Counter = 1
+2024-01-18 11:01:07,585 : work_objects.py : _check_format : 201 : Correct data
+2024-01-18 11:01:07,585 : work_objects.py : _upgrade_format : 204 : Upgrading format data if needed. Data 5 / 3
+2024-01-18 11:01:07,585 : work_objects.py : _upgrade_format : 213 : Returned data is 5 / 3,  type <class 'str'>
+2024-01-18 11:01:08,640 : work_objects.py : __init__ : 13 : Initialization of data for Fraction instance ['4', '/', '3']
+2024-01-18 11:01:08,640 : work_objects.py : __init__ : 13 : Initialization of data for Fraction instance ['5', '/', '3']
+2024-01-18 11:01:08,640 : work_objects.py : __init__ : 170 : <class 'work_objects.Action'> initializing symbol: *
+2024-01-18 11:01:08,640 : work_objects.py : get_sign_type : 176 : Parent class <class 'work_objects.Multiple'>
+2024-01-18 11:01:08,640 : work_objects.py : __call__ : 103 : This is __call__ from class <work_objects.Multiple object at 0x7f2d11910ca0>
+2024-01-18 11:01:08,640 : work_objects.py : make_action : 138 : Making action - multiplication
+2024-01-18 11:01:08,640 : work_objects.py : make_action : 142 : Numerator - 20, denominator - 9
+2024-01-18 11:01:08,640 : work_objects.py : simple_fraction : 51 : Fraction simplifying. in the beginning (20, 9)
+2024-01-18 11:01:08,640 : work_objects.py : get_whole_part : 38 : Getting whole part in fraction
+2024-01-18 11:01:08,641 : work_objects.py : get_whole_part : 45 : There is a whole part, is 2
+2024-01-18 11:01:08,641 : work_objects.py : gcd : 23 : Starting to find common divider
+2024-01-18 11:01:08,641 : work_objects.py : gcd : 26 : a = 2, b = 9
+2024-01-18 11:01:08,641 : work_objects.py : gcd : 31 : Upgrade_data (9, 2)
+2024-01-18 11:01:08,641 : work_objects.py : gcd : 23 : Starting to find common divider
+2024-01-18 11:01:08,641 : work_objects.py : gcd : 26 : a = 9, b = 2
+2024-01-18 11:01:08,641 : work_objects.py : gcd : 31 : Upgrade_data (2, 1)
+2024-01-18 11:01:08,641 : work_objects.py : gcd : 23 : Starting to find common divider
+2024-01-18 11:01:08,641 : work_objects.py : gcd : 26 : a = 2, b = 1
+2024-01-18 11:01:08,641 : work_objects.py : gcd : 28 : As 2 % 1 = 0 (Result should be 0). Commom divider founded - 1
+2024-01-18 11:01:08,641 : work_objects.py : gcd : 33 : Returned result is  1
+2024-01-18 11:01:08,641 : work_objects.py : gcd : 33 : Returned result is  1
+2024-01-18 11:01:08,641 : work_objects.py : simple_fraction : 58 : Final result (2, 2, 9)
+2024-01-18 11:01:08,641 : work_objects.py : print_fraction : 62 : Printing info. Final data is (2, 2, 9)
+2024-01-18 11:02:02,105 : work_objects.py : __call__ : 183 : Calling instance of class <class 'work_objects.WorkWithData'>, with data 1 (2 / 3)
+2024-01-18 11:02:02,105 : work_objects.py : _check_format : 190 : Checking format of data 1 (2 / 3)
+2024-01-18 11:02:02,106 : work_objects.py : _check_format : 197 : Counter = 1
+2024-01-18 11:02:02,106 : work_objects.py : _check_format : 201 : Correct data
+2024-01-18 11:02:02,106 : work_objects.py : _upgrade_format : 204 : Upgrading format data if needed. Data 1 (2 / 3)
+2024-01-18 11:02:02,106 : work_objects.py : _upgrade_format : 207 : Upgrading is needed.
+2024-01-18 11:02:02,106 : work_objects.py : _upgrade_format : 209 : Denominator is 3, type is <class 'str'>
+2024-01-18 11:02:02,106 : work_objects.py : _upgrade_format : 211 : Numerator is 5, type is <class 'int'>
+2024-01-18 11:02:02,106 : work_objects.py : _upgrade_format : 213 : Returned data is 5 / 3,  type <class 'str'>
+2024-01-18 11:02:05,955 : work_objects.py : __call__ : 183 : Calling instance of class <class 'work_objects.WorkWithData'>, with data 3 / 4
+2024-01-18 11:02:05,956 : work_objects.py : _check_format : 190 : Checking format of data 3 / 4
+2024-01-18 11:02:05,956 : work_objects.py : _check_format : 197 : Counter = 1
+2024-01-18 11:02:05,956 : work_objects.py : _check_format : 201 : Correct data
+2024-01-18 11:02:05,956 : work_objects.py : _upgrade_format : 204 : Upgrading format data if needed. Data 3 / 4
+2024-01-18 11:02:05,956 : work_objects.py : _upgrade_format : 213 : Returned data is 3 / 4,  type <class 'str'>
+2024-01-18 11:02:07,993 : work_objects.py : __init__ : 13 : Initialization of data for Fraction instance ['5', '/', '3']
+2024-01-18 11:02:07,993 : work_objects.py : __init__ : 13 : Initialization of data for Fraction instance ['3', '/', '4']
+2024-01-18 11:02:07,993 : work_objects.py : __init__ : 170 : <class 'work_objects.Action'> initializing symbol: *
+2024-01-18 11:02:07,993 : work_objects.py : get_sign_type : 176 : Parent class <class 'work_objects.Multiple'>
+2024-01-18 11:02:07,993 : work_objects.py : __call__ : 103 : This is __call__ from class <work_objects.Multiple object at 0x7f2d11912f50>
+2024-01-18 11:02:07,993 : work_objects.py : make_action : 138 : Making action - multiplication
+2024-01-18 11:02:07,993 : work_objects.py : make_action : 142 : Numerator - 15, denominator - 12
+2024-01-18 11:02:07,993 : work_objects.py : simple_fraction : 51 : Fraction simplifying. in the beginning (15, 12)
+2024-01-18 11:02:07,993 : work_objects.py : get_whole_part : 38 : Getting whole part in fraction
+2024-01-18 11:02:07,993 : work_objects.py : get_whole_part : 45 : There is a whole part, is 1
+2024-01-18 11:02:07,993 : work_objects.py : gcd : 23 : Starting to find common divider
+2024-01-18 11:02:07,993 : work_objects.py : gcd : 26 : a = 1, b = 12
+2024-01-18 11:02:07,993 : work_objects.py : gcd : 31 : Upgrade_data (12, 1)
+2024-01-18 11:02:07,993 : work_objects.py : gcd : 23 : Starting to find common divider
+2024-01-18 11:02:07,993 : work_objects.py : gcd : 26 : a = 12, b = 1
+2024-01-18 11:02:07,993 : work_objects.py : gcd : 28 : As 12 % 1 = 0 (Result should be 0). Commom divider founded - 1
+2024-01-18 11:02:07,993 : work_objects.py : gcd : 33 : Returned result is  1
+2024-01-18 11:02:07,994 : work_objects.py : simple_fraction : 58 : Final result (1, 3, 12)
+2024-01-18 11:02:07,994 : work_objects.py : print_fraction : 62 : Printing info. Final data is (1, 3, 12)
+2024-01-18 11:05:46,665 : work_objects.py : __call__ : 183 : Calling instance of class <class 'work_objects.WorkWithData'>, with data 1 (2 / 3)
+2024-01-18 11:05:46,665 : work_objects.py : _check_format : 190 : Checking format of data 1 (2 / 3)
+2024-01-18 11:05:46,666 : work_objects.py : _check_format : 197 : Counter = 1
+2024-01-18 11:05:46,666 : work_objects.py : _check_format : 201 : Correct data
+2024-01-18 11:05:46,666 : work_objects.py : _upgrade_format : 204 : Upgrading format data if needed. Data 1 (2 / 3)
+2024-01-18 11:05:46,666 : work_objects.py : _upgrade_format : 207 : Upgrading is needed.
+2024-01-18 11:05:46,666 : work_objects.py : _upgrade_format : 209 : Denominator is 3, type is <class 'str'>
+2024-01-18 11:05:46,666 : work_objects.py : _upgrade_format : 211 : Numerator is 5, type is <class 'int'>
+2024-01-18 11:05:46,666 : work_objects.py : _upgrade_format : 213 : Returned data is 5 / 3,  type <class 'str'>
+2024-01-18 11:05:50,220 : work_objects.py : __call__ : 183 : Calling instance of class <class 'work_objects.WorkWithData'>, with data 3 / 4
+2024-01-18 11:05:50,220 : work_objects.py : _check_format : 190 : Checking format of data 3 / 4
+2024-01-18 11:05:50,220 : work_objects.py : _check_format : 197 : Counter = 1
+2024-01-18 11:05:50,220 : work_objects.py : _check_format : 201 : Correct data
+2024-01-18 11:05:50,220 : work_objects.py : _upgrade_format : 204 : Upgrading format data if needed. Data 3 / 4
+2024-01-18 11:05:50,220 : work_objects.py : _upgrade_format : 213 : Returned data is 3 / 4,  type <class 'str'>
+2024-01-18 11:05:52,288 : work_objects.py : __init__ : 13 : Initialization of data for Fraction instance ['5', '/', '3']
+2024-01-18 11:05:52,288 : work_objects.py : __init__ : 13 : Initialization of data for Fraction instance ['3', '/', '4']
+2024-01-18 11:05:52,288 : work_objects.py : __init__ : 170 : <class 'work_objects.Action'> initializing symbol: *
+2024-01-18 11:05:52,288 : work_objects.py : get_sign_type : 176 : Parent class <class 'work_objects.Multiple'>
+2024-01-18 11:05:52,288 : work_objects.py : __call__ : 103 : This is __call__ from class <work_objects.Multiple object at 0x7f7a49110ca0>
+2024-01-18 11:05:52,288 : work_objects.py : make_action : 138 : Making action - multiplication
+2024-01-18 11:05:52,288 : work_objects.py : make_action : 142 : Numerator - 15, denominator - 12
+2024-01-18 11:05:52,288 : work_objects.py : simple_fraction : 51 : Fraction simplifying. in the beginning (15, 12)
+2024-01-18 11:05:52,288 : work_objects.py : get_whole_part : 38 : Getting whole part in fraction
+2024-01-18 11:05:52,288 : work_objects.py : get_whole_part : 45 : There is a whole part, is 1
+2024-01-18 11:05:52,288 : work_objects.py : gcd : 23 : Starting to find common divider
+2024-01-18 11:05:52,288 : work_objects.py : gcd : 26 : a = 3, b = 12
+2024-01-18 11:05:52,288 : work_objects.py : gcd : 31 : Upgrade_data (12, 3)
+2024-01-18 11:05:52,288 : work_objects.py : gcd : 23 : Starting to find common divider
+2024-01-18 11:05:52,288 : work_objects.py : gcd : 26 : a = 12, b = 3
+2024-01-18 11:05:52,288 : work_objects.py : gcd : 28 : As 12 % 3 = 0 (Result should be 0). Commom divider founded - 3
+2024-01-18 11:05:52,288 : work_objects.py : gcd : 33 : Returned result is  3
+2024-01-18 11:05:52,288 : work_objects.py : simple_fraction : 58 : Final result (1, 1, 4)
+2024-01-18 11:05:52,288 : work_objects.py : print_fraction : 62 : Printing info. Final data is (1, 1, 4)
+2024-01-18 11:32:37,060 : work_objects.py : __call__ : 182 : Calling instance of class <class 'work_objects.WorkWithData'>, with data 1 (2 / 3)
+2024-01-18 11:32:37,065 : work_objects.py : _check_format : 189 : Checking format of data 1 (2 / 3)
+2024-01-18 11:32:37,066 : work_objects.py : _check_format : 196 : Counter = 1
+2024-01-18 11:32:37,066 : work_objects.py : _check_format : 200 : Correct data
+2024-01-18 11:32:37,066 : work_objects.py : _upgrade_format : 203 : Upgrading format data if needed. Data 1 (2 / 3)
+2024-01-18 11:32:37,066 : work_objects.py : _upgrade_format : 206 : Upgrading is needed.
+2024-01-18 11:32:37,067 : work_objects.py : _upgrade_format : 208 : Denominator is 3, type is <class 'str'>
+2024-01-18 11:32:37,067 : work_objects.py : _upgrade_format : 210 : Numerator is 5, type is <class 'int'>
+2024-01-18 11:32:37,067 : work_objects.py : _upgrade_format : 212 : Returned data is 5 / 3,  type <class 'str'>
+2024-01-18 11:32:43,482 : work_objects.py : __call__ : 182 : Calling instance of class <class 'work_objects.WorkWithData'>, with data 3 / 4
+2024-01-18 11:32:43,482 : work_objects.py : _check_format : 189 : Checking format of data 3 / 4
+2024-01-18 11:32:43,482 : work_objects.py : _check_format : 196 : Counter = 1
+2024-01-18 11:32:43,482 : work_objects.py : _check_format : 200 : Correct data
+2024-01-18 11:32:43,482 : work_objects.py : _upgrade_format : 203 : Upgrading format data if needed. Data 3 / 4
+2024-01-18 11:32:43,482 : work_objects.py : _upgrade_format : 212 : Returned data is 3 / 4,  type <class 'str'>
+2024-01-18 11:32:45,165 : work_objects.py : __init__ : 13 : Initialization of data for Fraction instance ['5', '/', '3']
+2024-01-18 11:32:45,165 : work_objects.py : __init__ : 13 : Initialization of data for Fraction instance ['3', '/', '4']
+2024-01-18 11:32:45,165 : work_objects.py : __init__ : 169 : <class 'work_objects.Action'> initializing symbol: *
+2024-01-18 11:32:45,165 : work_objects.py : get_sign_type : 175 : Parent class <class 'work_objects.Multiple'>
+2024-01-18 11:32:45,165 : work_objects.py : __call__ : 102 : This is __call__ from class <work_objects.Multiple object at 0x7f855c910ca0>
+2024-01-18 11:32:45,165 : work_objects.py : make_action : 137 : Making action - multiplication
+2024-01-18 11:32:45,165 : work_objects.py : make_action : 141 : Numerator - 15, denominator - 12
+2024-01-18 11:32:45,165 : work_objects.py : _simple_fraction : 51 : Fraction simplifying. in the beginning (15, 12)
+2024-01-18 11:32:45,165 : work_objects.py : _get_whole_part : 38 : Getting whole part in fraction
+2024-01-18 11:32:45,165 : work_objects.py : _get_whole_part : 45 : There is a whole part, is 1
+2024-01-18 11:32:45,165 : work_objects.py : _gcd : 23 : Starting to find common divider
+2024-01-18 11:32:45,165 : work_objects.py : _gcd : 26 : a = 3, b = 12
+2024-01-18 11:32:45,165 : work_objects.py : _gcd : 31 : Upgrade_data (12, 3)
+2024-01-18 11:32:45,165 : work_objects.py : _gcd : 23 : Starting to find common divider
+2024-01-18 11:32:45,165 : work_objects.py : _gcd : 26 : a = 12, b = 3
+2024-01-18 11:32:45,166 : work_objects.py : _gcd : 28 : As 12 % 3 = 0 (Result should be 0). Commom divider founded - 3
+2024-01-18 11:32:45,166 : work_objects.py : _gcd : 33 : Returned result is  3
+2024-01-18 11:32:45,166 : work_objects.py : _simple_fraction : 58 : Final result (1, 1, 4)
+2024-01-18 11:32:45,166 : work_objects.py : _print_fraction : 62 : Printing info. Final data is (1, 1, 4)
+2024-01-18 11:33:38,518 : work_objects.py : __call__ : 182 : Calling instance of class <class 'work_objects.WorkWithData'>, with data 3 / 4
+2024-01-18 11:33:38,518 : work_objects.py : _check_format : 189 : Checking format of data 3 / 4
+2024-01-18 11:33:38,519 : work_objects.py : _check_format : 196 : Counter = 1
+2024-01-18 11:33:38,519 : work_objects.py : _check_format : 200 : Correct data
+2024-01-18 11:33:38,519 : work_objects.py : _upgrade_format : 203 : Upgrading format data if needed. Data 3 / 4
+2024-01-18 11:33:38,519 : work_objects.py : _upgrade_format : 212 : Returned data is 3 / 4,  type <class 'str'>
+2024-01-18 11:33:49,795 : work_objects.py : __call__ : 182 : Calling instance of class <class 'work_objects.WorkWithData'>, with data 1 (2 / 3)
+2024-01-18 11:33:49,795 : work_objects.py : _check_format : 189 : Checking format of data 1 (2 / 3)
+2024-01-18 11:33:49,795 : work_objects.py : _check_format : 196 : Counter = 1
+2024-01-18 11:33:49,795 : work_objects.py : _check_format : 200 : Correct data
+2024-01-18 11:33:49,795 : work_objects.py : _upgrade_format : 203 : Upgrading format data if needed. Data 1 (2 / 3)
+2024-01-18 11:33:49,795 : work_objects.py : _upgrade_format : 206 : Upgrading is needed.
+2024-01-18 11:33:49,795 : work_objects.py : _upgrade_format : 208 : Denominator is 3, type is <class 'str'>
+2024-01-18 11:33:49,795 : work_objects.py : _upgrade_format : 210 : Numerator is 5, type is <class 'int'>
+2024-01-18 11:33:49,796 : work_objects.py : _upgrade_format : 212 : Returned data is 5 / 3,  type <class 'str'>
+2024-01-18 11:33:51,739 : work_objects.py : __init__ : 13 : Initialization of data for Fraction instance ['3', '/', '4']
+2024-01-18 11:33:51,739 : work_objects.py : __init__ : 13 : Initialization of data for Fraction instance ['5', '/', '3']
+2024-01-18 11:33:51,739 : work_objects.py : __init__ : 169 : <class 'work_objects.Action'> initializing symbol: *
+2024-01-18 11:33:51,739 : work_objects.py : get_sign_type : 175 : Parent class <class 'work_objects.Multiple'>
+2024-01-18 11:33:51,739 : work_objects.py : __call__ : 102 : This is __call__ from class <work_objects.Multiple object at 0x7fa51f9d2d40>
+2024-01-18 11:33:51,739 : work_objects.py : make_action : 137 : Making action - multiplication
+2024-01-18 11:33:51,739 : work_objects.py : make_action : 141 : Numerator - 15, denominator - 12
+2024-01-18 11:33:51,739 : work_objects.py : _simple_fraction : 51 : Fraction simplifying. in the beginning (15, 12)
+2024-01-18 11:33:51,739 : work_objects.py : _get_whole_part : 38 : Getting whole part in fraction
+2024-01-18 11:33:51,739 : work_objects.py : _get_whole_part : 45 : There is a whole part, is 1
+2024-01-18 11:33:51,739 : work_objects.py : _gcd : 23 : Starting to find common divider
+2024-01-18 11:33:51,739 : work_objects.py : _gcd : 26 : a = 3, b = 12
+2024-01-18 11:33:51,739 : work_objects.py : _gcd : 31 : Upgrade_data (12, 3)
+2024-01-18 11:33:51,739 : work_objects.py : _gcd : 23 : Starting to find common divider
+2024-01-18 11:33:51,739 : work_objects.py : _gcd : 26 : a = 12, b = 3
+2024-01-18 11:33:51,739 : work_objects.py : _gcd : 28 : As 12 % 3 = 0 (Result should be 0). Commom divider founded - 3
+2024-01-18 11:33:51,739 : work_objects.py : _gcd : 33 : Returned result is  3
+2024-01-18 11:33:51,739 : work_objects.py : _simple_fraction : 58 : Final result (1, 1, 4)
+2024-01-18 11:33:51,740 : work_objects.py : _print_fraction : 62 : Printing info. Final data is (1, 1, 4)
+2024-01-18 11:47:04,432 : work_objects.py : __call__ : 182 : Calling instance of class <class 'work_objects.WorkWithData'>, with data 2.5 / 3
+2024-01-18 11:47:04,448 : work_objects.py : _check_format : 189 : Checking format of data 2.5 / 3
+2024-01-18 11:47:04,448 : work_objects.py : _check_format : 196 : Counter = 2
+2024-01-18 11:47:04,448 : work_objects.py : _check_format : 198 : Not correct data
+2024-01-18 11:47:04,448 : work_objects.py : __call__ : 182 : Calling instance of class <class 'work_objects.WorkWithData'>, with data 22/ 349
+2024-01-18 11:47:04,448 : work_objects.py : _check_format : 189 : Checking format of data 22/ 349
+2024-01-18 11:47:04,448 : work_objects.py : _check_format : 196 : Counter = 2
+2024-01-18 11:47:04,448 : work_objects.py : _check_format : 198 : Not correct data
+2024-01-18 11:47:04,448 : work_objects.py : __call__ : 182 : Calling instance of class <class 'work_objects.WorkWithData'>, with data 22 /349
+2024-01-18 11:47:04,448 : work_objects.py : _check_format : 189 : Checking format of data 22 /349
+2024-01-18 11:47:04,448 : work_objects.py : _check_format : 196 : Counter = 2
+2024-01-18 11:47:04,448 : work_objects.py : _check_format : 198 : Not correct data
+2024-01-18 11:47:04,448 : work_objects.py : __call__ : 182 : Calling instance of class <class 'work_objects.WorkWithData'>, with data 222(22586 / 333339)
+2024-01-18 11:47:04,448 : work_objects.py : _check_format : 189 : Checking format of data 222(22586 / 333339)
+2024-01-18 11:47:04,448 : work_objects.py : _check_format : 196 : Counter = 2
+2024-01-18 11:47:04,448 : work_objects.py : _check_format : 198 : Not correct data
+2024-01-18 11:47:04,448 : work_objects.py : __call__ : 182 : Calling instance of class <class 'work_objects.WorkWithData'>, with data 222 (22586/ 333339)
+2024-01-18 11:47:04,448 : work_objects.py : _check_format : 189 : Checking format of data 222 (22586/ 333339)
+2024-01-18 11:47:04,448 : work_objects.py : _check_format : 196 : Counter = 2
+2024-01-18 11:47:04,448 : work_objects.py : _check_format : 198 : Not correct data
+2024-01-18 11:47:04,448 : work_objects.py : __call__ : 182 : Calling instance of class <class 'work_objects.WorkWithData'>, with data 222(22586/333339)
+2024-01-18 11:47:04,448 : work_objects.py : _check_format : 189 : Checking format of data 222(22586/333339)
+2024-01-18 11:47:04,448 : work_objects.py : _check_format : 196 : Counter = 2
+2024-01-18 11:47:04,448 : work_objects.py : _check_format : 198 : Not correct data
+2024-01-18 11:47:04,448 : work_objects.py : __call__ : 182 : Calling instance of class <class 'work_objects.WorkWithData'>, with data 578 (2 / -3)
+2024-01-18 11:47:04,449 : work_objects.py : _check_format : 189 : Checking format of data 578 (2 / -3)
+2024-01-18 11:47:04,449 : work_objects.py : _check_format : 196 : Counter = 2
+2024-01-18 11:47:04,449 : work_objects.py : _check_format : 198 : Not correct data
+2024-01-18 11:47:04,449 : work_objects.py : __call__ : 182 : Calling instance of class <class 'work_objects.WorkWithData'>, with data 578 (-2 / -3)
+2024-01-18 11:47:04,449 : work_objects.py : _check_format : 189 : Checking format of data 578 (-2 / -3)
+2024-01-18 11:47:04,449 : work_objects.py : _check_format : 196 : Counter = 2
+2024-01-18 11:47:04,449 : work_objects.py : _check_format : 198 : Not correct data
+2024-01-18 11:47:04,449 : work_objects.py : __call__ : 182 : Calling instance of class <class 'work_objects.WorkWithData'>, with data 578 2 / -3)
+2024-01-18 11:47:04,449 : work_objects.py : _check_format : 189 : Checking format of data 578 2 / -3)
+2024-01-18 11:47:04,449 : work_objects.py : _check_format : 196 : Counter = 2
+2024-01-18 11:47:04,449 : work_objects.py : _check_format : 198 : Not correct data
+2024-01-18 11:47:04,449 : work_objects.py : __call__ : 182 : Calling instance of class <class 'work_objects.WorkWithData'>, with data 578 (2 / -3
+2024-01-18 11:47:04,449 : work_objects.py : _check_format : 189 : Checking format of data 578 (2 / -3
+2024-01-18 11:47:04,449 : work_objects.py : _check_format : 196 : Counter = 2
+2024-01-18 11:47:04,449 : work_objects.py : _check_format : 198 : Not correct data
+2024-01-18 11:47:04,449 : work_objects.py : __call__ : 182 : Calling instance of class <class 'work_objects.WorkWithData'>, with data a (2 / -3)
+2024-01-18 11:47:04,449 : work_objects.py : _check_format : 189 : Checking format of data a (2 / -3)
+2024-01-18 11:47:04,449 : work_objects.py : _check_format : 196 : Counter = 2
+2024-01-18 11:47:04,449 : work_objects.py : _check_format : 198 : Not correct data
+2024-01-18 11:55:19,443 : work_objects.py : __call__ : 182 : Calling instance of class <class 'work_objects.WorkWithData'>, with data 2.5 / 3
+2024-01-18 11:55:19,445 : work_objects.py : _check_format : 189 : Checking format of data 2.5 / 3
+2024-01-18 11:55:19,445 : work_objects.py : _check_format : 196 : Counter = 2
+2024-01-18 11:55:19,446 : work_objects.py : _check_format : 198 : Not correct data
+2024-01-18 11:55:19,446 : work_objects.py : __call__ : 182 : Calling instance of class <class 'work_objects.WorkWithData'>, with data 22/ 349
+2024-01-18 11:55:19,446 : work_objects.py : _check_format : 189 : Checking format of data 22/ 349
+2024-01-18 11:55:19,446 : work_objects.py : _check_format : 196 : Counter = 2
+2024-01-18 11:55:19,446 : work_objects.py : _check_format : 198 : Not correct data
+2024-01-18 11:55:19,446 : work_objects.py : __call__ : 182 : Calling instance of class <class 'work_objects.WorkWithData'>, with data 22 /349
+2024-01-18 11:55:19,446 : work_objects.py : _check_format : 189 : Checking format of data 22 /349
+2024-01-18 11:55:19,446 : work_objects.py : _check_format : 196 : Counter = 2
+2024-01-18 11:55:19,446 : work_objects.py : _check_format : 198 : Not correct data
+2024-01-18 11:55:19,446 : work_objects.py : __call__ : 182 : Calling instance of class <class 'work_objects.WorkWithData'>, with data 222(22586 / 333339)
+2024-01-18 11:55:19,446 : work_objects.py : _check_format : 189 : Checking format of data 222(22586 / 333339)
+2024-01-18 11:55:19,446 : work_objects.py : _check_format : 196 : Counter = 2
+2024-01-18 11:55:19,446 : work_objects.py : _check_format : 198 : Not correct data
+2024-01-18 11:55:19,446 : work_objects.py : __call__ : 182 : Calling instance of class <class 'work_objects.WorkWithData'>, with data 222 (22586/ 333339)
+2024-01-18 11:55:19,446 : work_objects.py : _check_format : 189 : Checking format of data 222 (22586/ 333339)
+2024-01-18 11:55:19,446 : work_objects.py : _check_format : 196 : Counter = 2
+2024-01-18 11:55:19,446 : work_objects.py : _check_format : 198 : Not correct data
+2024-01-18 11:55:19,446 : work_objects.py : __call__ : 182 : Calling instance of class <class 'work_objects.WorkWithData'>, with data 222(22586/333339)
+2024-01-18 11:55:19,446 : work_objects.py : _check_format : 189 : Checking format of data 222(22586/333339)
+2024-01-18 11:55:19,446 : work_objects.py : _check_format : 196 : Counter = 2
+2024-01-18 11:55:19,446 : work_objects.py : _check_format : 198 : Not correct data
+2024-01-18 11:55:19,446 : work_objects.py : __call__ : 182 : Calling instance of class <class 'work_objects.WorkWithData'>, with data 578 (2 / -3)
+2024-01-18 11:55:19,446 : work_objects.py : _check_format : 189 : Checking format of data 578 (2 / -3)
+2024-01-18 11:55:19,446 : work_objects.py : _check_format : 196 : Counter = 2
+2024-01-18 11:55:19,446 : work_objects.py : _check_format : 198 : Not correct data
+2024-01-18 11:55:19,447 : work_objects.py : __call__ : 182 : Calling instance of class <class 'work_objects.WorkWithData'>, with data 578 (-2 / -3)
+2024-01-18 11:55:19,447 : work_objects.py : _check_format : 189 : Checking format of data 578 (-2 / -3)
+2024-01-18 11:55:19,447 : work_objects.py : _check_format : 196 : Counter = 2
+2024-01-18 11:55:19,447 : work_objects.py : _check_format : 198 : Not correct data
+2024-01-18 11:55:19,447 : work_objects.py : __call__ : 182 : Calling instance of class <class 'work_objects.WorkWithData'>, with data 578 2 / -3)
+2024-01-18 11:55:19,447 : work_objects.py : _check_format : 189 : Checking format of data 578 2 / -3)
+2024-01-18 11:55:19,447 : work_objects.py : _check_format : 196 : Counter = 2
+2024-01-18 11:55:19,447 : work_objects.py : _check_format : 198 : Not correct data
+2024-01-18 11:55:19,447 : work_objects.py : __call__ : 182 : Calling instance of class <class 'work_objects.WorkWithData'>, with data 578 (2 / -3
+2024-01-18 11:55:19,447 : work_objects.py : _check_format : 189 : Checking format of data 578 (2 / -3
+2024-01-18 11:55:19,447 : work_objects.py : _check_format : 196 : Counter = 2
+2024-01-18 11:55:19,447 : work_objects.py : _check_format : 198 : Not correct data
+2024-01-18 11:55:19,447 : work_objects.py : __call__ : 182 : Calling instance of class <class 'work_objects.WorkWithData'>, with data a (2 / -3)
+2024-01-18 11:55:19,447 : work_objects.py : _check_format : 189 : Checking format of data a (2 / -3)
+2024-01-18 11:55:19,447 : work_objects.py : _check_format : 196 : Counter = 2
+2024-01-18 11:55:19,447 : work_objects.py : _check_format : 198 : Not correct data
+2024-01-18 11:55:19,447 : work_objects.py : __call__ : 182 : Calling instance of class <class 'work_objects.WorkWithData'>, with data -58 (3 / 4)
+2024-01-18 11:55:19,447 : work_objects.py : _check_format : 189 : Checking format of data -58 (3 / 4)
+2024-01-18 11:55:19,447 : work_objects.py : _check_format : 196 : Counter = 2
+2024-01-18 11:55:19,447 : work_objects.py : _check_format : 198 : Not correct data
+2024-01-18 11:55:49,185 : work_objects.py : __call__ : 182 : Calling instance of class <class 'work_objects.WorkWithData'>, with data 2.5 / 3
+2024-01-18 11:55:49,185 : work_objects.py : _check_format : 189 : Checking format of data 2.5 / 3
+2024-01-18 11:55:49,185 : work_objects.py : _check_format : 196 : Counter = 2
+2024-01-18 11:55:49,185 : work_objects.py : _check_format : 198 : Not correct data
+2024-01-18 11:55:49,185 : work_objects.py : __call__ : 182 : Calling instance of class <class 'work_objects.WorkWithData'>, with data 22/ 349
+2024-01-18 11:55:49,185 : work_objects.py : _check_format : 189 : Checking format of data 22/ 349
+2024-01-18 11:55:49,185 : work_objects.py : _check_format : 196 : Counter = 2
+2024-01-18 11:55:49,185 : work_objects.py : _check_format : 198 : Not correct data
+2024-01-18 11:55:49,185 : work_objects.py : __call__ : 182 : Calling instance of class <class 'work_objects.WorkWithData'>, with data 22 /349
+2024-01-18 11:55:49,185 : work_objects.py : _check_format : 189 : Checking format of data 22 /349
+2024-01-18 11:55:49,185 : work_objects.py : _check_format : 196 : Counter = 2
+2024-01-18 11:55:49,185 : work_objects.py : _check_format : 198 : Not correct data
+2024-01-18 11:55:49,185 : work_objects.py : __call__ : 182 : Calling instance of class <class 'work_objects.WorkWithData'>, with data 222(22586 / 333339)
+2024-01-18 11:55:49,185 : work_objects.py : _check_format : 189 : Checking format of data 222(22586 / 333339)
+2024-01-18 11:55:49,185 : work_objects.py : _check_format : 196 : Counter = 2
+2024-01-18 11:55:49,185 : work_objects.py : _check_format : 198 : Not correct data
+2024-01-18 11:55:49,185 : work_objects.py : __call__ : 182 : Calling instance of class <class 'work_objects.WorkWithData'>, with data 222 (22586/ 333339)
+2024-01-18 11:55:49,186 : work_objects.py : _check_format : 189 : Checking format of data 222 (22586/ 333339)
+2024-01-18 11:55:49,186 : work_objects.py : _check_format : 196 : Counter = 2
+2024-01-18 11:55:49,186 : work_objects.py : _check_format : 198 : Not correct data
+2024-01-18 11:55:49,186 : work_objects.py : __call__ : 182 : Calling instance of class <class 'work_objects.WorkWithData'>, with data 222(22586/333339)
+2024-01-18 11:55:49,186 : work_objects.py : _check_format : 189 : Checking format of data 222(22586/333339)
+2024-01-18 11:55:49,186 : work_objects.py : _check_format : 196 : Counter = 2
+2024-01-18 11:55:49,186 : work_objects.py : _check_format : 198 : Not correct data
+2024-01-18 11:55:49,186 : work_objects.py : __call__ : 182 : Calling instance of class <class 'work_objects.WorkWithData'>, with data 578 (2 / -3)
+2024-01-18 11:55:49,186 : work_objects.py : _check_format : 189 : Checking format of data 578 (2 / -3)
+2024-01-18 11:55:49,186 : work_objects.py : _check_format : 196 : Counter = 2
+2024-01-18 11:55:49,186 : work_objects.py : _check_format : 198 : Not correct data
+2024-01-18 11:55:49,186 : work_objects.py : __call__ : 182 : Calling instance of class <class 'work_objects.WorkWithData'>, with data 578 (-2 / -3)
+2024-01-18 11:55:49,186 : work_objects.py : _check_format : 189 : Checking format of data 578 (-2 / -3)
+2024-01-18 11:55:49,186 : work_objects.py : _check_format : 196 : Counter = 2
+2024-01-18 11:55:49,186 : work_objects.py : _check_format : 198 : Not correct data
+2024-01-18 11:55:49,186 : work_objects.py : __call__ : 182 : Calling instance of class <class 'work_objects.WorkWithData'>, with data 578 2 / -3)
+2024-01-18 11:55:49,186 : work_objects.py : _check_format : 189 : Checking format of data 578 2 / -3)
+2024-01-18 11:55:49,186 : work_objects.py : _check_format : 196 : Counter = 2
+2024-01-18 11:55:49,186 : work_objects.py : _check_format : 198 : Not correct data
+2024-01-18 11:55:49,186 : work_objects.py : __call__ : 182 : Calling instance of class <class 'work_objects.WorkWithData'>, with data 578 (2 / -3
+2024-01-18 11:55:49,186 : work_objects.py : _check_format : 189 : Checking format of data 578 (2 / -3
+2024-01-18 11:55:49,186 : work_objects.py : _check_format : 196 : Counter = 2
+2024-01-18 11:55:49,186 : work_objects.py : _check_format : 198 : Not correct data
+2024-01-18 11:55:49,186 : work_objects.py : __call__ : 182 : Calling instance of class <class 'work_objects.WorkWithData'>, with data a (2 / -3)
+2024-01-18 11:55:49,186 : work_objects.py : _check_format : 189 : Checking format of data a (2 / -3)
+2024-01-18 11:55:49,186 : work_objects.py : _check_format : 196 : Counter = 2
+2024-01-18 11:55:49,186 : work_objects.py : _check_format : 198 : Not correct data
+2024-01-18 11:55:49,186 : work_objects.py : __call__ : 182 : Calling instance of class <class 'work_objects.WorkWithData'>, with data -58 (3 / 4)
+2024-01-18 11:55:49,186 : work_objects.py : _check_format : 189 : Checking format of data -58 (3 / 4)
+2024-01-18 11:55:49,186 : work_objects.py : _check_format : 196 : Counter = 2
+2024-01-18 11:55:49,186 : work_objects.py : _check_format : 198 : Not correct data
+2024-01-18 12:06:18,270 : work_objects.py : __call__ : 182 : Calling instance of class <class 'work_objects.WorkWithData'>, with data 2.5 / 3
+2024-01-18 12:06:18,272 : work_objects.py : _check_format : 189 : Checking format of data 2.5 / 3
+2024-01-18 12:06:18,272 : work_objects.py : _check_format : 196 : Counter = 2
+2024-01-18 12:06:18,272 : work_objects.py : _check_format : 198 : Not correct data
+2024-01-18 12:06:18,273 : work_objects.py : __call__ : 182 : Calling instance of class <class 'work_objects.WorkWithData'>, with data 22/ 349
+2024-01-18 12:06:18,273 : work_objects.py : _check_format : 189 : Checking format of data 22/ 349
+2024-01-18 12:06:18,273 : work_objects.py : _check_format : 196 : Counter = 2
+2024-01-18 12:06:18,273 : work_objects.py : _check_format : 198 : Not correct data
+2024-01-18 12:06:18,273 : work_objects.py : __call__ : 182 : Calling instance of class <class 'work_objects.WorkWithData'>, with data 22 /349
+2024-01-18 12:06:18,273 : work_objects.py : _check_format : 189 : Checking format of data 22 /349
+2024-01-18 12:06:18,273 : work_objects.py : _check_format : 196 : Counter = 2
+2024-01-18 12:06:18,273 : work_objects.py : _check_format : 198 : Not correct data
+2024-01-18 12:06:18,273 : work_objects.py : __call__ : 182 : Calling instance of class <class 'work_objects.WorkWithData'>, with data 222(22586 / 333339)
+2024-01-18 12:06:18,273 : work_objects.py : _check_format : 189 : Checking format of data 222(22586 / 333339)
+2024-01-18 12:06:18,273 : work_objects.py : _check_format : 196 : Counter = 2
+2024-01-18 12:06:18,273 : work_objects.py : _check_format : 198 : Not correct data
+2024-01-18 12:06:18,273 : work_objects.py : __call__ : 182 : Calling instance of class <class 'work_objects.WorkWithData'>, with data 222 (22586/ 333339)
+2024-01-18 12:06:18,273 : work_objects.py : _check_format : 189 : Checking format of data 222 (22586/ 333339)
+2024-01-18 12:06:18,273 : work_objects.py : _check_format : 196 : Counter = 2
+2024-01-18 12:06:18,273 : work_objects.py : _check_format : 198 : Not correct data
+2024-01-18 12:06:18,273 : work_objects.py : __call__ : 182 : Calling instance of class <class 'work_objects.WorkWithData'>, with data 222(22586/333339)
+2024-01-18 12:06:18,273 : work_objects.py : _check_format : 189 : Checking format of data 222(22586/333339)
+2024-01-18 12:06:18,273 : work_objects.py : _check_format : 196 : Counter = 2
+2024-01-18 12:06:18,273 : work_objects.py : _check_format : 198 : Not correct data
+2024-01-18 12:06:18,273 : work_objects.py : __call__ : 182 : Calling instance of class <class 'work_objects.WorkWithData'>, with data 578 (2 / -3)
+2024-01-18 12:06:18,273 : work_objects.py : _check_format : 189 : Checking format of data 578 (2 / -3)
+2024-01-18 12:06:18,273 : work_objects.py : _check_format : 196 : Counter = 2
+2024-01-18 12:06:18,273 : work_objects.py : _check_format : 198 : Not correct data
+2024-01-18 12:06:18,273 : work_objects.py : __call__ : 182 : Calling instance of class <class 'work_objects.WorkWithData'>, with data 578 (-2 / -3)
+2024-01-18 12:06:18,273 : work_objects.py : _check_format : 189 : Checking format of data 578 (-2 / -3)
+2024-01-18 12:06:18,273 : work_objects.py : _check_format : 196 : Counter = 2
+2024-01-18 12:06:18,273 : work_objects.py : _check_format : 198 : Not correct data
+2024-01-18 12:06:18,273 : work_objects.py : __call__ : 182 : Calling instance of class <class 'work_objects.WorkWithData'>, with data 578 2 / -3)
+2024-01-18 12:06:18,273 : work_objects.py : _check_format : 189 : Checking format of data 578 2 / -3)
+2024-01-18 12:06:18,274 : work_objects.py : _check_format : 196 : Counter = 2
+2024-01-18 12:06:18,274 : work_objects.py : _check_format : 198 : Not correct data
+2024-01-18 12:06:18,274 : work_objects.py : __call__ : 182 : Calling instance of class <class 'work_objects.WorkWithData'>, with data 578 (2 / -3
+2024-01-18 12:06:18,274 : work_objects.py : _check_format : 189 : Checking format of data 578 (2 / -3
+2024-01-18 12:06:18,274 : work_objects.py : _check_format : 196 : Counter = 2
+2024-01-18 12:06:18,274 : work_objects.py : _check_format : 198 : Not correct data
+2024-01-18 12:06:18,274 : work_objects.py : __call__ : 182 : Calling instance of class <class 'work_objects.WorkWithData'>, with data a (2 / -3)
+2024-01-18 12:06:18,274 : work_objects.py : _check_format : 189 : Checking format of data a (2 / -3)
+2024-01-18 12:06:18,274 : work_objects.py : _check_format : 196 : Counter = 2
+2024-01-18 12:06:18,274 : work_objects.py : _check_format : 198 : Not correct data
+2024-01-18 12:06:18,274 : work_objects.py : __call__ : 182 : Calling instance of class <class 'work_objects.WorkWithData'>, with data -58 (3 / 4)
+2024-01-18 12:06:18,274 : work_objects.py : _check_format : 189 : Checking format of data -58 (3 / 4)
+2024-01-18 12:06:18,274 : work_objects.py : _check_format : 196 : Counter = 2
+2024-01-18 12:06:18,274 : work_objects.py : _check_format : 198 : Not correct data
+2024-01-18 12:07:18,852 : work_objects.py : __call__ : 182 : Calling instance of class <class 'work_objects.WorkWithData'>, with data 2.5 / 3
+2024-01-18 12:07:18,852 : work_objects.py : _check_format : 189 : Checking format of data 2.5 / 3
+2024-01-18 12:07:18,852 : work_objects.py : _check_format : 196 : Counter = 2
+2024-01-18 12:07:18,852 : work_objects.py : _check_format : 198 : Not correct data
+2024-01-18 12:07:18,852 : work_objects.py : __call__ : 182 : Calling instance of class <class 'work_objects.WorkWithData'>, with data 22/ 349
+2024-01-18 12:07:18,852 : work_objects.py : _check_format : 189 : Checking format of data 22/ 349
+2024-01-18 12:07:18,852 : work_objects.py : _check_format : 196 : Counter = 2
+2024-01-18 12:07:18,853 : work_objects.py : _check_format : 198 : Not correct data
+2024-01-18 12:07:18,853 : work_objects.py : __call__ : 182 : Calling instance of class <class 'work_objects.WorkWithData'>, with data 22 /349
+2024-01-18 12:07:18,853 : work_objects.py : _check_format : 189 : Checking format of data 22 /349
+2024-01-18 12:07:18,853 : work_objects.py : _check_format : 196 : Counter = 2
+2024-01-18 12:07:18,853 : work_objects.py : _check_format : 198 : Not correct data
+2024-01-18 12:07:18,853 : work_objects.py : __call__ : 182 : Calling instance of class <class 'work_objects.WorkWithData'>, with data 222(22586 / 333339)
+2024-01-18 12:07:18,853 : work_objects.py : _check_format : 189 : Checking format of data 222(22586 / 333339)
+2024-01-18 12:07:18,853 : work_objects.py : _check_format : 196 : Counter = 2
+2024-01-18 12:07:18,853 : work_objects.py : _check_format : 198 : Not correct data
+2024-01-18 12:07:18,853 : work_objects.py : __call__ : 182 : Calling instance of class <class 'work_objects.WorkWithData'>, with data 222 (22586/ 333339)
+2024-01-18 12:07:18,853 : work_objects.py : _check_format : 189 : Checking format of data 222 (22586/ 333339)
+2024-01-18 12:07:18,853 : work_objects.py : _check_format : 196 : Counter = 2
+2024-01-18 12:07:18,853 : work_objects.py : _check_format : 198 : Not correct data
+2024-01-18 12:07:18,853 : work_objects.py : __call__ : 182 : Calling instance of class <class 'work_objects.WorkWithData'>, with data 222(22586/333339)
+2024-01-18 12:07:18,853 : work_objects.py : _check_format : 189 : Checking format of data 222(22586/333339)
+2024-01-18 12:07:18,853 : work_objects.py : _check_format : 196 : Counter = 2
+2024-01-18 12:07:18,853 : work_objects.py : _check_format : 198 : Not correct data
+2024-01-18 12:07:18,853 : work_objects.py : __call__ : 182 : Calling instance of class <class 'work_objects.WorkWithData'>, with data 578 (2 / -3)
+2024-01-18 12:07:18,853 : work_objects.py : _check_format : 189 : Checking format of data 578 (2 / -3)
+2024-01-18 12:07:18,853 : work_objects.py : _check_format : 196 : Counter = 2
+2024-01-18 12:07:18,853 : work_objects.py : _check_format : 198 : Not correct data
+2024-01-18 12:07:18,853 : work_objects.py : __call__ : 182 : Calling instance of class <class 'work_objects.WorkWithData'>, with data 578 (-2 / -3)
+2024-01-18 12:07:18,853 : work_objects.py : _check_format : 189 : Checking format of data 578 (-2 / -3)
+2024-01-18 12:07:18,853 : work_objects.py : _check_format : 196 : Counter = 2
+2024-01-18 12:07:18,853 : work_objects.py : _check_format : 198 : Not correct data
+2024-01-18 12:07:18,853 : work_objects.py : __call__ : 182 : Calling instance of class <class 'work_objects.WorkWithData'>, with data 578 2 / -3)
+2024-01-18 12:07:18,853 : work_objects.py : _check_format : 189 : Checking format of data 578 2 / -3)
+2024-01-18 12:07:18,853 : work_objects.py : _check_format : 196 : Counter = 2
+2024-01-18 12:07:18,853 : work_objects.py : _check_format : 198 : Not correct data
+2024-01-18 12:07:18,853 : work_objects.py : __call__ : 182 : Calling instance of class <class 'work_objects.WorkWithData'>, with data 578 (2 / -3
+2024-01-18 12:07:18,853 : work_objects.py : _check_format : 189 : Checking format of data 578 (2 / -3
+2024-01-18 12:07:18,853 : work_objects.py : _check_format : 196 : Counter = 2
+2024-01-18 12:07:18,853 : work_objects.py : _check_format : 198 : Not correct data
+2024-01-18 12:07:18,853 : work_objects.py : __call__ : 182 : Calling instance of class <class 'work_objects.WorkWithData'>, with data a (2 / -3)
+2024-01-18 12:07:18,853 : work_objects.py : _check_format : 189 : Checking format of data a (2 / -3)
+2024-01-18 12:07:18,853 : work_objects.py : _check_format : 196 : Counter = 2
+2024-01-18 12:07:18,853 : work_objects.py : _check_format : 198 : Not correct data
+2024-01-18 12:07:18,853 : work_objects.py : __call__ : 182 : Calling instance of class <class 'work_objects.WorkWithData'>, with data -58 (3 / 4)
+2024-01-18 12:07:18,853 : work_objects.py : _check_format : 189 : Checking format of data -58 (3 / 4)
+2024-01-18 12:07:18,854 : work_objects.py : _check_format : 196 : Counter = 2
+2024-01-18 12:07:18,854 : work_objects.py : _check_format : 198 : Not correct data
+2024-01-18 12:07:18,854 : work_objects.py : __call__ : 182 : Calling instance of class <class 'work_objects.WorkWithData'>, with data 1 (2 / 5)
+2024-01-18 12:07:18,854 : work_objects.py : _check_format : 189 : Checking format of data 1 (2 / 5)
+2024-01-18 12:07:18,854 : work_objects.py : _check_format : 196 : Counter = 1
+2024-01-18 12:07:18,854 : work_objects.py : _check_format : 200 : Correct data
+2024-01-18 12:07:18,854 : work_objects.py : _upgrade_format : 203 : Upgrading format data if needed. Data 1 (2 / 5)
+2024-01-18 12:07:18,854 : work_objects.py : _upgrade_format : 206 : Upgrading is needed.
+2024-01-18 12:07:18,854 : work_objects.py : _upgrade_format : 208 : Denominator is 5, type is <class 'str'>
+2024-01-18 12:07:18,854 : work_objects.py : _upgrade_format : 210 : Numerator is 7, type is <class 'int'>
+2024-01-18 12:07:18,854 : work_objects.py : _upgrade_format : 212 : Returned data is 7 / 5,  type <class 'str'>
+2024-01-18 12:07:18,854 : work_objects.py : __call__ : 182 : Calling instance of class <class 'work_objects.WorkWithData'>, with data 3 / 4
+2024-01-18 12:07:18,854 : work_objects.py : _check_format : 189 : Checking format of data 3 / 4
+2024-01-18 12:07:18,854 : work_objects.py : _check_format : 196 : Counter = 1
+2024-01-18 12:07:18,854 : work_objects.py : _check_format : 200 : Correct data
+2024-01-18 12:07:18,854 : work_objects.py : _upgrade_format : 203 : Upgrading format data if needed. Data 3 / 4
+2024-01-18 12:07:18,854 : work_objects.py : _upgrade_format : 212 : Returned data is 3 / 4,  type <class 'str'>
+2024-01-18 12:07:18,854 : work_objects.py : __call__ : 182 : Calling instance of class <class 'work_objects.WorkWithData'>, with data 178 (345 / 679)
+2024-01-18 12:07:18,854 : work_objects.py : _check_format : 189 : Checking format of data 178 (345 / 679)
+2024-01-18 12:07:18,854 : work_objects.py : _check_format : 196 : Counter = 1
+2024-01-18 12:07:18,854 : work_objects.py : _check_format : 200 : Correct data
+2024-01-18 12:07:18,854 : work_objects.py : _upgrade_format : 203 : Upgrading format data if needed. Data 178 (345 / 679)
+2024-01-18 12:07:18,855 : work_objects.py : _upgrade_format : 206 : Upgrading is needed.
+2024-01-18 12:07:18,855 : work_objects.py : _upgrade_format : 208 : Denominator is 679, type is <class 'str'>
+2024-01-18 12:07:18,855 : work_objects.py : _upgrade_format : 210 : Numerator is 121207, type is <class 'int'>
+2024-01-18 12:07:18,855 : work_objects.py : _upgrade_format : 212 : Returned data is 121207 / 679,  type <class 'str'>
+2024-01-18 12:07:57,250 : work_objects.py : __call__ : 182 : Calling instance of class <class 'work_objects.WorkWithData'>, with data 2.5 / 3
+2024-01-18 12:07:57,250 : work_objects.py : _check_format : 189 : Checking format of data 2.5 / 3
+2024-01-18 12:07:57,251 : work_objects.py : _check_format : 196 : Counter = 2
+2024-01-18 12:07:57,251 : work_objects.py : _check_format : 198 : Not correct data
+2024-01-18 12:07:57,251 : work_objects.py : __call__ : 182 : Calling instance of class <class 'work_objects.WorkWithData'>, with data 22/ 349
+2024-01-18 12:07:57,251 : work_objects.py : _check_format : 189 : Checking format of data 22/ 349
+2024-01-18 12:07:57,251 : work_objects.py : _check_format : 196 : Counter = 2
+2024-01-18 12:07:57,251 : work_objects.py : _check_format : 198 : Not correct data
+2024-01-18 12:07:57,251 : work_objects.py : __call__ : 182 : Calling instance of class <class 'work_objects.WorkWithData'>, with data 22 /349
+2024-01-18 12:07:57,251 : work_objects.py : _check_format : 189 : Checking format of data 22 /349
+2024-01-18 12:07:57,251 : work_objects.py : _check_format : 196 : Counter = 2
+2024-01-18 12:07:57,251 : work_objects.py : _check_format : 198 : Not correct data
+2024-01-18 12:07:57,251 : work_objects.py : __call__ : 182 : Calling instance of class <class 'work_objects.WorkWithData'>, with data 222(22586 / 333339)
+2024-01-18 12:07:57,251 : work_objects.py : _check_format : 189 : Checking format of data 222(22586 / 333339)
+2024-01-18 12:07:57,251 : work_objects.py : _check_format : 196 : Counter = 2
+2024-01-18 12:07:57,251 : work_objects.py : _check_format : 198 : Not correct data
+2024-01-18 12:07:57,251 : work_objects.py : __call__ : 182 : Calling instance of class <class 'work_objects.WorkWithData'>, with data 222 (22586/ 333339)
+2024-01-18 12:07:57,251 : work_objects.py : _check_format : 189 : Checking format of data 222 (22586/ 333339)
+2024-01-18 12:07:57,251 : work_objects.py : _check_format : 196 : Counter = 2
+2024-01-18 12:07:57,251 : work_objects.py : _check_format : 198 : Not correct data
+2024-01-18 12:07:57,251 : work_objects.py : __call__ : 182 : Calling instance of class <class 'work_objects.WorkWithData'>, with data 222(22586/333339)
+2024-01-18 12:07:57,251 : work_objects.py : _check_format : 189 : Checking format of data 222(22586/333339)
+2024-01-18 12:07:57,251 : work_objects.py : _check_format : 196 : Counter = 2
+2024-01-18 12:07:57,251 : work_objects.py : _check_format : 198 : Not correct data
+2024-01-18 12:07:57,251 : work_objects.py : __call__ : 182 : Calling instance of class <class 'work_objects.WorkWithData'>, with data 578 (2 / -3)
+2024-01-18 12:07:57,251 : work_objects.py : _check_format : 189 : Checking format of data 578 (2 / -3)
+2024-01-18 12:07:57,251 : work_objects.py : _check_format : 196 : Counter = 2
+2024-01-18 12:07:57,251 : work_objects.py : _check_format : 198 : Not correct data
+2024-01-18 12:07:57,251 : work_objects.py : __call__ : 182 : Calling instance of class <class 'work_objects.WorkWithData'>, with data 578 (-2 / -3)
+2024-01-18 12:07:57,251 : work_objects.py : _check_format : 189 : Checking format of data 578 (-2 / -3)
+2024-01-18 12:07:57,251 : work_objects.py : _check_format : 196 : Counter = 2
+2024-01-18 12:07:57,252 : work_objects.py : _check_format : 198 : Not correct data
+2024-01-18 12:07:57,252 : work_objects.py : __call__ : 182 : Calling instance of class <class 'work_objects.WorkWithData'>, with data 578 2 / -3)
+2024-01-18 12:07:57,252 : work_objects.py : _check_format : 189 : Checking format of data 578 2 / -3)
+2024-01-18 12:07:57,252 : work_objects.py : _check_format : 196 : Counter = 2
+2024-01-18 12:07:57,252 : work_objects.py : _check_format : 198 : Not correct data
+2024-01-18 12:07:57,252 : work_objects.py : __call__ : 182 : Calling instance of class <class 'work_objects.WorkWithData'>, with data 578 (2 / -3
+2024-01-18 12:07:57,252 : work_objects.py : _check_format : 189 : Checking format of data 578 (2 / -3
+2024-01-18 12:07:57,252 : work_objects.py : _check_format : 196 : Counter = 2
+2024-01-18 12:07:57,252 : work_objects.py : _check_format : 198 : Not correct data
+2024-01-18 12:07:57,252 : work_objects.py : __call__ : 182 : Calling instance of class <class 'work_objects.WorkWithData'>, with data a (2 / -3)
+2024-01-18 12:07:57,252 : work_objects.py : _check_format : 189 : Checking format of data a (2 / -3)
+2024-01-18 12:07:57,252 : work_objects.py : _check_format : 196 : Counter = 2
+2024-01-18 12:07:57,252 : work_objects.py : _check_format : 198 : Not correct data
+2024-01-18 12:07:57,252 : work_objects.py : __call__ : 182 : Calling instance of class <class 'work_objects.WorkWithData'>, with data -58 (3 / 4)
+2024-01-18 12:07:57,252 : work_objects.py : _check_format : 189 : Checking format of data -58 (3 / 4)
+2024-01-18 12:07:57,252 : work_objects.py : _check_format : 196 : Counter = 2
+2024-01-18 12:07:57,252 : work_objects.py : _check_format : 198 : Not correct data
+2024-01-18 12:07:57,252 : work_objects.py : __call__ : 182 : Calling instance of class <class 'work_objects.WorkWithData'>, with data 1 (2 / 5)
+2024-01-18 12:07:57,252 : work_objects.py : _check_format : 189 : Checking format of data 1 (2 / 5)
+2024-01-18 12:07:57,252 : work_objects.py : _check_format : 196 : Counter = 1
+2024-01-18 12:07:57,252 : work_objects.py : _check_format : 200 : Correct data
+2024-01-18 12:07:57,252 : work_objects.py : _upgrade_format : 203 : Upgrading format data if needed. Data 1 (2 / 5)
+2024-01-18 12:07:57,252 : work_objects.py : _upgrade_format : 206 : Upgrading is needed.
+2024-01-18 12:07:57,252 : work_objects.py : _upgrade_format : 208 : Denominator is 5, type is <class 'str'>
+2024-01-18 12:07:57,252 : work_objects.py : _upgrade_format : 210 : Numerator is 7, type is <class 'int'>
+2024-01-18 12:07:57,252 : work_objects.py : _upgrade_format : 212 : Returned data is 7 / 5,  type <class 'str'>
+2024-01-18 12:07:57,252 : work_objects.py : __call__ : 182 : Calling instance of class <class 'work_objects.WorkWithData'>, with data 3 / 4
+2024-01-18 12:07:57,252 : work_objects.py : _check_format : 189 : Checking format of data 3 / 4
+2024-01-18 12:07:57,252 : work_objects.py : _check_format : 196 : Counter = 1
+2024-01-18 12:07:57,252 : work_objects.py : _check_format : 200 : Correct data
+2024-01-18 12:07:57,252 : work_objects.py : _upgrade_format : 203 : Upgrading format data if needed. Data 3 / 4
+2024-01-18 12:07:57,252 : work_objects.py : _upgrade_format : 212 : Returned data is 3 / 4,  type <class 'str'>
+2024-01-18 12:07:57,253 : work_objects.py : __call__ : 182 : Calling instance of class <class 'work_objects.WorkWithData'>, with data 178 (345 / 679)
+2024-01-18 12:07:57,253 : work_objects.py : _check_format : 189 : Checking format of data 178 (345 / 679)
+2024-01-18 12:07:57,253 : work_objects.py : _check_format : 196 : Counter = 1
+2024-01-18 12:07:57,253 : work_objects.py : _check_format : 200 : Correct data
+2024-01-18 12:07:57,253 : work_objects.py : _upgrade_format : 203 : Upgrading format data if needed. Data 178 (345 / 679)
+2024-01-18 12:07:57,253 : work_objects.py : _upgrade_format : 206 : Upgrading is needed.
+2024-01-18 12:07:57,253 : work_objects.py : _upgrade_format : 208 : Denominator is 679, type is <class 'str'>
+2024-01-18 12:07:57,253 : work_objects.py : _upgrade_format : 210 : Numerator is 121207, type is <class 'int'>
+2024-01-18 12:07:57,253 : work_objects.py : _upgrade_format : 212 : Returned data is 121207 / 679,  type <class 'str'>
+2024-01-18 12:12:47,238 : work_objects.py : __call__ : 182 : Calling instance of class <class 'work_objects.WorkWithData'>, with data 1 (2 / 3)
+2024-01-18 12:12:47,239 : work_objects.py : _check_format : 189 : Checking format of data 1 (2 / 3)
+2024-01-18 12:12:47,239 : work_objects.py : _check_format : 196 : Counter = 1
+2024-01-18 12:12:47,239 : work_objects.py : _check_format : 200 : Correct data
+2024-01-18 12:12:47,239 : work_objects.py : _upgrade_format : 203 : Upgrading format data if needed. Data 1 (2 / 3)
+2024-01-18 12:12:47,239 : work_objects.py : _upgrade_format : 206 : Upgrading is needed.
+2024-01-18 12:12:47,240 : work_objects.py : _upgrade_format : 208 : Denominator is 3, type is <class 'str'>
+2024-01-18 12:12:47,240 : work_objects.py : _upgrade_format : 210 : Numerator is 5, type is <class 'int'>
+2024-01-18 12:12:47,240 : work_objects.py : _upgrade_format : 212 : Returned data is 5 / 3,  type <class 'str'>
+2024-01-18 12:12:50,923 : work_objects.py : __call__ : 182 : Calling instance of class <class 'work_objects.WorkWithData'>, with data 3 / 4
+2024-01-18 12:12:50,923 : work_objects.py : _check_format : 189 : Checking format of data 3 / 4
+2024-01-18 12:12:50,923 : work_objects.py : _check_format : 196 : Counter = 1
+2024-01-18 12:12:50,923 : work_objects.py : _check_format : 200 : Correct data
+2024-01-18 12:12:50,923 : work_objects.py : _upgrade_format : 203 : Upgrading format data if needed. Data 3 / 4
+2024-01-18 12:12:50,923 : work_objects.py : _upgrade_format : 212 : Returned data is 3 / 4,  type <class 'str'>
+2024-01-18 12:12:52,761 : work_objects.py : __init__ : 13 : Initialization of data for Fraction instance ['5', '/', '3']
+2024-01-18 12:12:52,761 : work_objects.py : __init__ : 13 : Initialization of data for Fraction instance ['3', '/', '4']
+2024-01-18 12:12:52,761 : work_objects.py : __init__ : 169 : <class 'work_objects.Action'> initializing symbol: *
+2024-01-18 12:12:52,761 : work_objects.py : get_sign_type : 175 : Parent class <class 'work_objects.Multiple'>
+2024-01-18 12:12:52,761 : work_objects.py : __call__ : 102 : This is __call__ from class <work_objects.Multiple object at 0x7fed97e0cc40>
+2024-01-18 12:12:52,762 : work_objects.py : _make_action : 108 : Making action - summ
+2024-01-18 12:12:52,762 : work_objects.py : _make_action : 114 : Numerator - 29, denominator - 12
+2024-01-18 12:12:52,762 : work_objects.py : _simple_fraction : 51 : Fraction simplifying. in the beginning (29, 12)
+2024-01-18 12:12:52,762 : work_objects.py : _get_whole_part : 38 : Getting whole part in fraction
+2024-01-18 12:12:52,762 : work_objects.py : _get_whole_part : 45 : There is a whole part, is 2
+2024-01-18 12:12:52,762 : work_objects.py : _gcd : 23 : Starting to find common divider
+2024-01-18 12:12:52,762 : work_objects.py : _gcd : 26 : a = 5, b = 12
+2024-01-18 12:12:52,762 : work_objects.py : _gcd : 31 : Upgrade_data (12, 5)
+2024-01-18 12:12:52,762 : work_objects.py : _gcd : 23 : Starting to find common divider
+2024-01-18 12:12:52,762 : work_objects.py : _gcd : 26 : a = 12, b = 5
+2024-01-18 12:12:52,762 : work_objects.py : _gcd : 31 : Upgrade_data (5, 2)
+2024-01-18 12:12:52,762 : work_objects.py : _gcd : 23 : Starting to find common divider
+2024-01-18 12:12:52,762 : work_objects.py : _gcd : 26 : a = 5, b = 2
+2024-01-18 12:12:52,762 : work_objects.py : _gcd : 31 : Upgrade_data (2, 1)
+2024-01-18 12:12:52,762 : work_objects.py : _gcd : 23 : Starting to find common divider
+2024-01-18 12:12:52,762 : work_objects.py : _gcd : 26 : a = 2, b = 1
+2024-01-18 12:12:52,762 : work_objects.py : _gcd : 28 : As 2 % 1 = 0 (Result should be 0). Commom divider founded - 1
+2024-01-18 12:12:52,762 : work_objects.py : _gcd : 33 : Returned result is  1
+2024-01-18 12:12:52,762 : work_objects.py : _gcd : 33 : Returned result is  1
+2024-01-18 12:12:52,762 : work_objects.py : _gcd : 33 : Returned result is  1
+2024-01-18 12:12:52,762 : work_objects.py : _simple_fraction : 58 : Final result (2, 5, 12)
+2024-01-18 12:12:52,762 : work_objects.py : _print_fraction : 62 : Printing info. Final data is (2, 5, 12)
+2024-01-18 12:28:47,704 : work_objects.py : __init__ : 169 : <class 'work_objects.Action'> initializing symbol: *
+2024-01-18 12:28:47,706 : work_objects.py : get_sign_type : 175 : Parent class <class 'work_objects.Multiple'>
+2024-01-18 12:28:47,706 : work_objects.py : __init__ : 169 : <class 'work_objects.Action'> initializing symbol: +
+2024-01-18 12:28:47,706 : work_objects.py : get_sign_type : 175 : Parent class <class 'work_objects.Summ'>
+2024-01-18 12:28:47,706 : work_objects.py : __init__ : 169 : <class 'work_objects.Action'> initializing symbol: -
+2024-01-18 12:28:47,708 : work_objects.py : get_sign_type : 175 : Parent class <class 'work_objects.Difference'>
+2024-01-18 12:28:47,712 : work_objects.py : __init__ : 169 : <class 'work_objects.Action'> initializing symbol: /
+2024-01-18 12:28:47,712 : work_objects.py : get_sign_type : 175 : Parent class <class 'work_objects.Divide'>
+2024-01-18 12:28:47,712 : work_objects.py : __call__ : 182 : Calling instance of class <class 'work_objects.WorkWithData'>, with data 2.5 / 3
+2024-01-18 12:28:47,712 : work_objects.py : _check_format : 189 : Checking format of data 2.5 / 3
+2024-01-18 12:28:47,712 : work_objects.py : _check_format : 196 : Counter = 2
+2024-01-18 12:28:47,712 : work_objects.py : _check_format : 198 : Not correct data
+2024-01-18 12:28:47,712 : work_objects.py : __call__ : 182 : Calling instance of class <class 'work_objects.WorkWithData'>, with data 22/ 349
+2024-01-18 12:28:47,712 : work_objects.py : _check_format : 189 : Checking format of data 22/ 349
+2024-01-18 12:28:47,713 : work_objects.py : _check_format : 196 : Counter = 2
+2024-01-18 12:28:47,713 : work_objects.py : _check_format : 198 : Not correct data
+2024-01-18 12:28:47,713 : work_objects.py : __call__ : 182 : Calling instance of class <class 'work_objects.WorkWithData'>, with data 22 /349
+2024-01-18 12:28:47,713 : work_objects.py : _check_format : 189 : Checking format of data 22 /349
+2024-01-18 12:28:47,713 : work_objects.py : _check_format : 196 : Counter = 2
+2024-01-18 12:28:47,713 : work_objects.py : _check_format : 198 : Not correct data
+2024-01-18 12:28:47,713 : work_objects.py : __call__ : 182 : Calling instance of class <class 'work_objects.WorkWithData'>, with data 222(22586 / 333339)
+2024-01-18 12:28:47,713 : work_objects.py : _check_format : 189 : Checking format of data 222(22586 / 333339)
+2024-01-18 12:28:47,713 : work_objects.py : _check_format : 196 : Counter = 2
+2024-01-18 12:28:47,713 : work_objects.py : _check_format : 198 : Not correct data
+2024-01-18 12:28:47,713 : work_objects.py : __call__ : 182 : Calling instance of class <class 'work_objects.WorkWithData'>, with data 222 (22586/ 333339)
+2024-01-18 12:28:47,713 : work_objects.py : _check_format : 189 : Checking format of data 222 (22586/ 333339)
+2024-01-18 12:28:47,713 : work_objects.py : _check_format : 196 : Counter = 2
+2024-01-18 12:28:47,713 : work_objects.py : _check_format : 198 : Not correct data
+2024-01-18 12:28:47,713 : work_objects.py : __call__ : 182 : Calling instance of class <class 'work_objects.WorkWithData'>, with data 222(22586/333339)
+2024-01-18 12:28:47,713 : work_objects.py : _check_format : 189 : Checking format of data 222(22586/333339)
+2024-01-18 12:28:47,713 : work_objects.py : _check_format : 196 : Counter = 2
+2024-01-18 12:28:47,713 : work_objects.py : _check_format : 198 : Not correct data
+2024-01-18 12:28:47,713 : work_objects.py : __call__ : 182 : Calling instance of class <class 'work_objects.WorkWithData'>, with data 578 (2 / -3)
+2024-01-18 12:28:47,713 : work_objects.py : _check_format : 189 : Checking format of data 578 (2 / -3)
+2024-01-18 12:28:47,713 : work_objects.py : _check_format : 196 : Counter = 2
+2024-01-18 12:28:47,713 : work_objects.py : _check_format : 198 : Not correct data
+2024-01-18 12:28:47,713 : work_objects.py : __call__ : 182 : Calling instance of class <class 'work_objects.WorkWithData'>, with data 578 (-2 / -3)
+2024-01-18 12:28:47,713 : work_objects.py : _check_format : 189 : Checking format of data 578 (-2 / -3)
+2024-01-18 12:28:47,713 : work_objects.py : _check_format : 196 : Counter = 2
+2024-01-18 12:28:47,713 : work_objects.py : _check_format : 198 : Not correct data
+2024-01-18 12:28:47,713 : work_objects.py : __call__ : 182 : Calling instance of class <class 'work_objects.WorkWithData'>, with data 578 2 / -3)
+2024-01-18 12:28:47,713 : work_objects.py : _check_format : 189 : Checking format of data 578 2 / -3)
+2024-01-18 12:28:47,713 : work_objects.py : _check_format : 196 : Counter = 2
+2024-01-18 12:28:47,713 : work_objects.py : _check_format : 198 : Not correct data
+2024-01-18 12:28:47,713 : work_objects.py : __call__ : 182 : Calling instance of class <class 'work_objects.WorkWithData'>, with data 578 (2 / -3
+2024-01-18 12:28:47,713 : work_objects.py : _check_format : 189 : Checking format of data 578 (2 / -3
+2024-01-18 12:28:47,713 : work_objects.py : _check_format : 196 : Counter = 2
+2024-01-18 12:28:47,713 : work_objects.py : _check_format : 198 : Not correct data
+2024-01-18 12:28:47,713 : work_objects.py : __call__ : 182 : Calling instance of class <class 'work_objects.WorkWithData'>, with data a (2 / -3)
+2024-01-18 12:28:47,713 : work_objects.py : _check_format : 189 : Checking format of data a (2 / -3)
+2024-01-18 12:28:47,713 : work_objects.py : _check_format : 196 : Counter = 2
+2024-01-18 12:28:47,713 : work_objects.py : _check_format : 198 : Not correct data
+2024-01-18 12:28:47,713 : work_objects.py : __call__ : 182 : Calling instance of class <class 'work_objects.WorkWithData'>, with data -58 (3 / 4)
+2024-01-18 12:28:47,713 : work_objects.py : _check_format : 189 : Checking format of data -58 (3 / 4)
+2024-01-18 12:28:47,713 : work_objects.py : _check_format : 196 : Counter = 2
+2024-01-18 12:28:47,713 : work_objects.py : _check_format : 198 : Not correct data
+2024-01-18 12:28:47,713 : work_objects.py : __call__ : 182 : Calling instance of class <class 'work_objects.WorkWithData'>, with data 1 (2 / 5)
+2024-01-18 12:28:47,713 : work_objects.py : _check_format : 189 : Checking format of data 1 (2 / 5)
+2024-01-18 12:28:47,714 : work_objects.py : _check_format : 196 : Counter = 1
+2024-01-18 12:28:47,714 : work_objects.py : _check_format : 200 : Correct data
+2024-01-18 12:28:47,714 : work_objects.py : _upgrade_format : 203 : Upgrading format data if needed. Data 1 (2 / 5)
+2024-01-18 12:28:47,714 : work_objects.py : _upgrade_format : 206 : Upgrading is needed.
+2024-01-18 12:28:47,714 : work_objects.py : _upgrade_format : 208 : Denominator is 5, type is <class 'str'>
+2024-01-18 12:28:47,714 : work_objects.py : _upgrade_format : 210 : Numerator is 7, type is <class 'int'>
+2024-01-18 12:28:47,714 : work_objects.py : _upgrade_format : 212 : Returned data is 7 / 5,  type <class 'str'>
+2024-01-18 12:28:47,714 : work_objects.py : __call__ : 182 : Calling instance of class <class 'work_objects.WorkWithData'>, with data 3 / 4
+2024-01-18 12:28:47,714 : work_objects.py : _check_format : 189 : Checking format of data 3 / 4
+2024-01-18 12:28:47,714 : work_objects.py : _check_format : 196 : Counter = 1
+2024-01-18 12:28:47,714 : work_objects.py : _check_format : 200 : Correct data
+2024-01-18 12:28:47,714 : work_objects.py : _upgrade_format : 203 : Upgrading format data if needed. Data 3 / 4
+2024-01-18 12:28:47,714 : work_objects.py : _upgrade_format : 212 : Returned data is 3 / 4,  type <class 'str'>
+2024-01-18 12:28:47,714 : work_objects.py : __call__ : 182 : Calling instance of class <class 'work_objects.WorkWithData'>, with data 178 (345 / 679)
+2024-01-18 12:28:47,714 : work_objects.py : _check_format : 189 : Checking format of data 178 (345 / 679)
+2024-01-18 12:28:47,714 : work_objects.py : _check_format : 196 : Counter = 1
+2024-01-18 12:28:47,714 : work_objects.py : _check_format : 200 : Correct data
+2024-01-18 12:28:47,714 : work_objects.py : _upgrade_format : 203 : Upgrading format data if needed. Data 178 (345 / 679)
+2024-01-18 12:28:47,714 : work_objects.py : _upgrade_format : 206 : Upgrading is needed.
+2024-01-18 12:28:47,714 : work_objects.py : _upgrade_format : 208 : Denominator is 679, type is <class 'str'>
+2024-01-18 12:28:47,714 : work_objects.py : _upgrade_format : 210 : Numerator is 121207, type is <class 'int'>
+2024-01-18 12:28:47,714 : work_objects.py : _upgrade_format : 212 : Returned data is 121207 / 679,  type <class 'str'>
