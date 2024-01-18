@@ -146,18 +146,22 @@ def tic_tac_game_start_game():
     game_manager: GameManager = GameManager()
     tic_tac_form = TicTacFieldTable(meta={'csrf': False})
     if tic_tac_form.validate_on_submit():
-        try:
-            response: Dict = tic_tac_form.data
-            view_logger.info(f"Received turn from Player with symbol {response}")
-            game_manager.game_manager(response)
-        except ValueError:
-            flash(message='please check turn it should be the only 1 symbol and "x" or "0"')
-        except IndexError:
-            flash(message='something goes wrong, please start again')
-            game_manager.restart_game_with_same_players()
-        except TypeError:
-            flash(message='something goes wrong, please start again')
-            game_manager.restart_game_with_same_players()
+        # try:
+        #     response: Dict = tic_tac_form.data
+        #     view_logger.info(f"Received turn from Player with symbol {response}")
+        #     game_manager(response)
+        # except ValueError:
+        #     flash(message='please check turn it should be the only 1 symbol and "x" or "0"')
+        # except IndexError:
+        #     flash(message='something goes wrong, please start again')
+        #     game_manager.restart_game_with_same_players()
+        # except TypeError:
+        #     flash(message='something goes wrong, please start again')
+        #     game_manager.restart_game_with_same_players()
+
+        response: Dict = tic_tac_form.data
+        view_logger.info(f"Received turn from Player with symbol {response}")
+        game_manager(response)
 
         session['players_data'] = game_manager["players_data"]
         return redirect(url_for('tic_tac_game_start_game'))
@@ -279,6 +283,19 @@ def handle_exception(e):
         view_logger.info(f'Error handler starting to work. Exception info {e.description}')
         error_message = 'Incorrect URL'
         return render_template('error_handler.html', error_message=error_message, now=datetime.datetime.utcnow())
+
+    elif isinstance(e, ValueError):
+        flash(message='please check turn it should be the only 1 symbol and "x" or "0"')
+
+    elif isinstance(e, TypeError):
+        flash(message='something goes wrong, please start again')
+        game_manager: GameManager = GameManager()
+        game_manager.restart_game_with_same_players()
+
+    elif isinstance(e, IndexError):
+        flash(message='something goes wrong, please start again')
+        game_manager: GameManager = GameManager()
+        game_manager.restart_game_with_same_players()
 
     return render_template('Something goes wrong', error_message=error_message, now=datetime.datetime.utcnow())
 
