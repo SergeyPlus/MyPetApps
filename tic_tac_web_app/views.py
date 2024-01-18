@@ -111,7 +111,7 @@ def tic_tac_game_players_introduction():
         abort(401)
 
     game_manager: GameManager = GameManager()
-    game_manager.change_reneder_form('set_player_names')
+    game_manager.change_render_form('set_player_names')
     session['game_data'] = game_manager["game_data"]
     view_logger.info(
         f'Players introduction. Game_render_form: {game_manager["game_data"]}')
@@ -120,7 +120,7 @@ def tic_tac_game_players_introduction():
     if form_players.validate_on_submit() and game_manager["game_data"]['game_render_form'] == 'set_player_names':
         view_logger.info(f'The players form is validated')
         game_manager.players.create_players_profiles(form_players)
-        game_manager.change_reneder_form('game')
+        game_manager.change_render_form('game')
         session['players_data'] = game_manager["players_data"]
         session['game_data'] = game_manager["game_data"]
 
@@ -146,18 +146,6 @@ def tic_tac_game_start_game():
     game_manager: GameManager = GameManager()
     tic_tac_form = TicTacFieldTable(meta={'csrf': False})
     if tic_tac_form.validate_on_submit():
-        # try:
-        #     response: Dict = tic_tac_form.data
-        #     view_logger.info(f"Received turn from Player with symbol {response}")
-        #     game_manager(response)
-        # except ValueError:
-        #     flash(message='please check turn it should be the only 1 symbol and "x" or "0"')
-        # except IndexError:
-        #     flash(message='something goes wrong, please start again')
-        #     game_manager.restart_game_with_same_players()
-        # except TypeError:
-        #     flash(message='something goes wrong, please start again')
-        #     game_manager.restart_game_with_same_players()
 
         response: Dict = tic_tac_form.data
         view_logger.info(f"Received turn from Player with symbol {response}")

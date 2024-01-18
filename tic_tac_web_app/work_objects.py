@@ -88,6 +88,16 @@ class Game:
     def __init__(self):
         self.__dict__ = self.game_data
 
+    def __call__(self, response: dict):
+        if not self._check_symbols_quantity_for_turn(response):
+            raise ValueError("The checking of symbols quantity passed not well")
+
+        wo_logger.info(f'The checking of symbols quantity passed well')
+
+        self._complete_field(response)
+        self._check_winner()
+        wo_logger.info(f'Game context {self.game_data}')
+
     def __repr__(self):
         return '; '.join([f'{key}: {value}' for key, value in self.game_data.items()])
 
@@ -181,8 +191,7 @@ class Game:
         wo_logger.info(f'Starting checking of the winner')
         horizontal_check: List[int] = self._horizontal_check()
         vertical_check: List[int] = self._vertical_check()
-        diagonals_check: List = self._diagonals_check()
-
+        diagonals_check: Tuple = self._diagonals_check()
 
         if 3 in horizontal_check or 3 in vertical_check or 3 in diagonals_check:
             self._identify_winner(Constants.SYM_CROSS.value)
@@ -215,7 +224,8 @@ class Game:
             f'Winner name {self}. Score player_1 and player_2 {players}')
         self._finalize_field()
 
-    def _check_symbols_quantity_for_turn(self, resp: Dict) -> bool:
+    @staticmethod
+    def _check_symbols_quantity_for_turn(resp: Dict) -> bool:
         """
         The function checks quantity symbols which player put during his turn. It's not possible make
         more than 1 symbols
@@ -305,15 +315,12 @@ class GameManager:
     def __setitem__(self, key: str, value):
         wo_logger.info(f"Key - {key}, value {value}")
         if self.game.game_data.get(key) is not None:
-            wo_logger.info(f"Key - {key}, value {value}")
             self.game.game_data[key] = value
         elif self.players.players_data.get(key) is not None:
-            wo_logger.info(f"Key - {key}, value {value}")
             self.players.players_data[key] = value
         else:
-            wo_logger.info(f"ELSE - Key - {key}, value {value}")
+            wo_logger.debug(f"ELSE - Key - {key}, value {value}")
             raise KeyError('Please use correct keys for getting data from game and player instances')
-
 
     def __call__(self, response: Dict) -> None:
         """
@@ -326,15 +333,7 @@ class GameManager:
 
         elif len(response) != 9:
             raise IndexError('The response should consists of 9 keys and values pairs')
-
-        if not self.game._check_symbols_quantity_for_turn(response):
-            raise ValueError("The checking of symbols quantity passed not well")
-
-        wo_logger.info(f'The checking of symbols quantity passed well')
-
-        self.game._complete_field(response)
-        self.game._check_winner()
-        wo_logger.info(f'Game context {self["game_data"]}')
+        self.game(response)
 
     def restart_game_with_same_players(self) -> None:
         """
@@ -369,15 +368,13 @@ class GameManager:
         wo_logger.info(f'Data cleared: {self}')
         wo_logger.info(f'Players_data cleared as well: {self.players}')
 
-    def change_reneder_form(self, regim: str) -> None:
+    def change_render_form(self, regim: str) -> None:
         """
         It changes forms for rendering during a game. 
         If regim is "game" it renders form with game field
         If regim is "set_player_names" it renders form with players introduction
         """
         self['game_data']['game_render_form'] = regim
-
-
 
 
 if __name__ == '__main__':
